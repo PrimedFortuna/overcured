@@ -259,6 +259,7 @@ shape = SubResource("WorldBoundaryShape2D_hvuor")
 shape = SubResource("WorldBoundaryShape2D_i2arf")
 
 [node name="Player2" type="CharacterBody2D" parent="."]
+visible = false
 position = Vector2(-7, 116)
 script = ExtResource("2_jwv4s")
 

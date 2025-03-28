@@ -20,8 +20,12 @@ position = Vector2(0, -34.5)
 shape = SubResource("RectangleShape2D_ab3gw")
 
 [node name="GridContainer" type="GridContainer" parent="."]
-offset_left = -116.0
-offset_top = -67.0
-offset_right = 120.0
-offset_bottom = 8.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -72.0
+offset_top = -40.0
+offset_right = 72.0
+grow_horizontal = 2
+grow_vertical = 2
 columns = 3
