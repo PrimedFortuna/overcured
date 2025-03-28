@@ -5,14 +5,15 @@
 [ext_resource type="FontFile" uid="uid://b5igmqdsdnp5c" path="res://Assets/PixelatedEleganceRegular-ovyAA.ttf" id="3_ppjuv"]
 [ext_resource type="LabelSettings" uid="uid://c22o3c17axtal" path="res://Scripts/textbox.tres" id="4_ipgag"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_blqn1"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w1nw0"]
 bg_color = Color(0, 0, 0, 0.494118)
 
-[sub_resource type="LabelSettings" id="LabelSettings_j7x76"]
+[sub_resource type="LabelSettings" id="LabelSettings_mjqtt"]
 font = ExtResource("3_ppjuv")
-font_size = 38
+font_size = 69
 
 [node name="Settings" type="Control"]
+clip_contents = true
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -21,53 +22,51 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_w1nw0")
 
-[node name="TextureRect" type="TextureRect" parent="."]
-layout_mode = 0
+[node name="TextureRect2" type="TextureRect" parent="."]
 offset_left = -4.0
 offset_right = 505.0
 offset_bottom = 326.0
+scale = Vector2(1.52, 1.68)
 texture = ExtResource("2_mjqtt")
 
-[node name="Title" type="Label" parent="."]
-layout_mode = 0
-offset_left = 40.0
-offset_top = 37.0
-offset_right = 370.0
-offset_bottom = 110.0
-theme_override_styles/normal = SubResource("StyleBoxFlat_blqn1")
+[node name="Title2" type="Label" parent="."]
+offset_left = 136.0
+offset_top = 88.0
+offset_right = 696.0
+offset_bottom = 208.0
+theme_override_font_sizes/font_size = 58
+theme_override_styles/normal = SubResource("StyleBoxFlat_w1nw0")
 text = "Overcured"
-label_settings = SubResource("LabelSettings_j7x76")
+label_settings = SubResource("LabelSettings_mjqtt")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="WIP" type="Label" parent="."]
-layout_mode = 0
-offset_left = 762.0
-offset_top = 52.0
-offset_right = 1094.0
-offset_bottom = 75.0
-theme_override_styles/normal = SubResource("StyleBoxFlat_blqn1")
+[node name="WIP2" type="Label" parent="."]
+offset_left = 1176.0
+offset_top = 72.0
+offset_right = 1881.0
+offset_bottom = 160.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_w1nw0")
 text = "ALL IMAGES ARE PLACEHOLDERS"
 label_settings = ExtResource("4_ipgag")
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="BackButton" type="Button" parent="."]
-layout_mode = 0
-offset_left = 40.0
-offset_top = 536.0
-offset_right = 322.0
-offset_bottom = 603.0
+offset_left = 120.0
+offset_top = 880.0
+offset_right = 434.0
+offset_bottom = 971.0
 theme_override_fonts/font = ExtResource("3_ppjuv")
-text = "Go Back
-"
+theme_override_font_sizes/font_size = 32
+text = "Go Back"
 
-[node name="WIPSettingsButton" type="Button" parent="."]
-layout_mode = 0
-offset_left = 448.0
-offset_top = 344.0
-offset_right = 730.0
-offset_bottom = 411.0
+[node name="WIP" type="Button" parent="."]
+offset_left = 792.0
+offset_top = 536.0
+offset_right = 1106.0
+offset_bottom = 627.0
 theme_override_fonts/font = ExtResource("3_ppjuv")
+theme_override_font_sizes/font_size = 32
 text = "WIP SETTINGS
 "

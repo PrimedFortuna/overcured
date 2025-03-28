@@ -11,13 +11,17 @@ config_version=5
 [application]
 
 config/name="Overcured"
+config/description="Overcured is a fast-paced coop game where players run a PokéCenter, crafting healing items and treating Pokémon before time runs out. Inspired by Overcooked, it highlights teamwork, resource management, and the urgency of emergency care. Made for Tech4Good TechJam, it reflects the Red Cross’s mission of rapid medical response in crisis situations."
 run/main_scene="uid://d27pjlgvk3ypx"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://Assets/icon.svg"
 
 [display]
 
+window/size/viewport_width=1920
+window/size/viewport_height=1080
 window/size/mode=3
+window/vsync/vsync_mode=0
 
 [input]
 
