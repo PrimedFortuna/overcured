@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://db6ji3v1uapgm"]
+
+[node name="Game" type="Node2D"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+
+[node name="TileMap" type="TileMap" parent="."]
+format = 2

@@ -1,0 +1,6 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://c22o3c17axtal"]
+
+[ext_resource type="FontFile" uid="uid://b5igmqdsdnp5c" path="res://PixelatedEleganceRegular-ovyAA.ttf" id="1_tyv77"]
+
+[resource]
+font = ExtResource("1_tyv77")
