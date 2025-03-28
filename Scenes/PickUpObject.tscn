@@ -8,12 +8,12 @@ radius = 32.0
 
 [node name="PickUpObject" type="Node2D"]
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Pokeball" type="Area2D" parent="."]
 script = ExtResource("1_o8kxb")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pokeball"]
 shape = SubResource("CircleShape2D_h6oey")
 
-[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
+[node name="Sprite2D" type="Sprite2D" parent="Pokeball"]
 scale = Vector2(0.05, 0.05)
 texture = ExtResource("1_bnmgb")

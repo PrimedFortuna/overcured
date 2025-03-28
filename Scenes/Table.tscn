@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://b7rgo8hd8g4iq"]
+
+[ext_resource type="Texture2D" uid="uid://cv3ykbw7r8ye8" path="res://Assets/table.png" id="1_5ervl"]
+[ext_resource type="Script" uid="uid://cfs64jt285hxk" path="res://Scripts/Table.gd" id="2_ab3gw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ab3gw"]
+size = Vector2(238, 69)
+
+[node name="Table" type="Node2D"]
+script = ExtResource("2_ab3gw")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="GridContainer" type="GridContainer" parent="StaticBody2D"]
+anchors_preset = -1
+anchor_right = 0.968
+anchor_bottom = 0.676
+offset_left = -116.067
+offset_top = -66.96
+offset_right = -116.067
+offset_bottom = -66.96
+columns = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+scale = Vector2(0.398856, 0.24)
+texture = ExtResource("1_5ervl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, -34.5)
+shape = SubResource("RectangleShape2D_ab3gw")
