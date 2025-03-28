@@ -1,11 +1,14 @@
-[gd_scene load_steps=12 format=3 uid="uid://db6ji3v1uapgm"]
+[gd_scene load_steps=13 format=3 uid="uid://db6ji3v1uapgm"]
 
 [ext_resource type="Texture2D" uid="uid://b5wkawcgojnos" path="res://Assets/Floor.png" id="1_3mbwn"]
 [ext_resource type="Script" uid="uid://bp2xtipdcd5rl" path="res://Scenes/GameScene.gd" id="1_lohlh"]
 [ext_resource type="Script" uid="uid://cifuuoa1l86f7" path="res://Scripts/Player.gd" id="2_jwv4s"]
 [ext_resource type="Texture2D" uid="uid://3pki2dc8xvn2" path="res://Assets/placeholdersprite.png" id="3_lohlh"]
 [ext_resource type="PackedScene" uid="uid://ncusujahgsdp" path="res://Scenes/PickUpObject.tscn" id="4_jwv4s"]
-[ext_resource type="PackedScene" uid="uid://b7rgo8hd8g4iq" path="res://Scenes/Table.tscn" id="6_kilg5"]
+[ext_resource type="Texture2D" uid="uid://cv3ykbw7r8ye8" path="res://Assets/table.png" id="4_lg2j6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ab3gw"]
+size = Vector2(238, 69)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b5kf5"]
 size = Vector2(64, 80)
@@ -32,14 +35,32 @@ script = ExtResource("1_lohlh")
 position = Vector2(0, 1)
 texture = ExtResource("1_3mbwn")
 
+[node name="Table" type="Node2D" parent="."]
+position = Vector2(0, -304)
+
+[node name="GridContainer" type="GridContainer" parent="Table"]
+offset_left = -116.0
+offset_top = -67.0
+offset_right = 120.0
+offset_bottom = 8.0
+columns = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Table"]
+
+[node name="Sprite2D" type="Sprite2D" parent="Table/StaticBody2D"]
+scale = Vector2(0.398856, 0.24)
+texture = ExtResource("4_lg2j6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Table/StaticBody2D"]
+position = Vector2(0, -34.5)
+shape = SubResource("RectangleShape2D_ab3gw")
+
 [node name="PickUpObject" parent="." instance=ExtResource("4_jwv4s")]
 position = Vector2(169, -105)
 
 [node name="PickUpObject2" parent="." instance=ExtResource("4_jwv4s")]
 position = Vector2(-221, -115)
-
-[node name="Table" parent="." instance=ExtResource("6_kilg5")]
-position = Vector2(-8, -294)
 
 [node name="Player" type="CharacterBody2D" parent="."]
 position = Vector2(-7, -10)

@@ -4,7 +4,8 @@ const SPEED = 180
 const RUN_SPEED = 300  
 var pickup_object = null  
 
-@onready var table = get_node("../Table")
+@onready var table = get_node("/Table")
+@onready var game_scene = get_node(".")
 
 func _ready():
 	print("Player script is running!")
@@ -12,6 +13,7 @@ func _ready():
 func _physics_process(_delta):
 	var direction = Vector2.ZERO
 
+	# Handle movement input
 	if Input.is_action_pressed("ui_right"):
 		direction.x += 1
 	if Input.is_action_pressed("ui_left"):
@@ -25,6 +27,7 @@ func _physics_process(_delta):
 	if Input.is_action_pressed("ui_shift"): 
 		current_speed = RUN_SPEED
 
+	# Apply velocity based on direction and speed
 	velocity = direction.normalized() * current_speed
 	move_and_slide()
 
@@ -32,29 +35,28 @@ func interact(item):
 	if item and pickup_object == null and global_position.distance_to(item.global_position) < 50: 
 		print("Picked up Item")
 		pickup_object = item
-		item.reparent(self)
+
+		if item.get_parent():
+			item.reparent(self)
+		else:
+			print("WARNING: Item has no parent before reparenting!")
+
 		item.position = Vector2(3, 30)
-
-	elif pickup_object == null and is_near_table():  #FILO
-		var last_item = table.remove_item_from_table()
-		if last_item:
-			print("Picked up from table:", last_item.name)
-			pickup_object = last_item
-			pickup_object.reparent(self)
-			pickup_object.position = Vector2(3, 30)
-
+	
 	elif pickup_object != null:
 		if is_near_table():
 			print("Dropped:", pickup_object.name)
-			pickup_object.reparent(table)
-			table.add_item_to_table(pickup_object)
+			game_scene.add_item_to_table(pickup_object)
 			pickup_object = null
 		else:
 			print("Dropped:", pickup_object.name)
-			pickup_object.reparent(get_parent())
-			get_parent().move_child(pickup_object, 1)
+
+			if pickup_object.get_parent():
+				pickup_object.reparent(get_parent())
+				get_parent().move_child(pickup_object, 1)
+
 			pickup_object.position = global_position 
-			pickup_object = null 
+			pickup_object = null
 
 func find_nearest_pickup_item() -> Node:
 	var nearest_item = null
