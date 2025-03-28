@@ -4,9 +4,9 @@
 [ext_resource type="Script" uid="uid://claq5iss3m6nt" path="res://Scripts/PickUpObject.gd" id="1_o8kxb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_h6oey"]
-radius = 32.0
+radius = 24.0
 
-[node name="PickUpObject" type="Node2D"]
+[node name="Pokeball" type="Node2D"]
 
 [node name="Pokeball" type="Area2D" parent="."]
 script = ExtResource("1_o8kxb")

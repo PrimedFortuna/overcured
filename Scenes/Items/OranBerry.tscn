@@ -16,5 +16,5 @@ shape = SubResource("CircleShape2D_qk4me")
 
 [node name="Sprite2D" type="Sprite2D" parent="OranBerry"]
 position = Vector2(1.13687e-13, 0)
-scale = Vector2(0.8, 0.8)
+scale = Vector2(0.55, 0.55)
 texture = ExtResource("1_y2q1o")
