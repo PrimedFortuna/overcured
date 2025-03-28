@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://ctg0dh4n60hqv"]
+
+[ext_resource type="Script" uid="uid://claq5iss3m6nt" path="res://Scripts/PickUpObject.gd" id="1_qk4me"]
+[ext_resource type="Texture2D" uid="uid://c3v6wmyh5sgx0" path="res://Assets/oranberry.png" id="1_y2q1o"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qk4me"]
+radius = 24.0
+
+[node name="OranBerry" type="Node2D"]
+
+[node name="OranBerry" type="Area2D" parent="."]
+script = ExtResource("1_qk4me")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OranBerry"]
+shape = SubResource("CircleShape2D_qk4me")
+
+[node name="Sprite2D" type="Sprite2D" parent="OranBerry"]
+position = Vector2(1.13687e-13, 0)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("1_y2q1o")

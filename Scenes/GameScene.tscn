@@ -1,10 +1,11 @@
-[gd_scene load_steps=29 format=3 uid="uid://db6ji3v1uapgm"]
+[gd_scene load_steps=30 format=3 uid="uid://db6ji3v1uapgm"]
 
 [ext_resource type="Texture2D" uid="uid://b5wkawcgojnos" path="res://Assets/Floor.png" id="1_3mbwn"]
 [ext_resource type="Script" uid="uid://bp2xtipdcd5rl" path="res://Scripts/GameScene.gd" id="1_lohlh"]
 [ext_resource type="Script" uid="uid://cifuuoa1l86f7" path="res://Scripts/Player.gd" id="2_jwv4s"]
 [ext_resource type="Texture2D" uid="uid://3pki2dc8xvn2" path="res://Assets/placeholdersprite.png" id="3_lohlh"]
-[ext_resource type="PackedScene" uid="uid://ncusujahgsdp" path="res://Scenes/PickUpObject.tscn" id="4_jwv4s"]
+[ext_resource type="PackedScene" uid="uid://ctg0dh4n60hqv" path="res://Scenes/Items/OranBerry.tscn" id="4_hgvmy"]
+[ext_resource type="PackedScene" uid="uid://ncusujahgsdp" path="res://Scenes/Items/PickUpObject.tscn" id="4_jwv4s"]
 [ext_resource type="PackedScene" uid="uid://b7rgo8hd8g4iq" path="res://Scenes/Table.tscn" id="6_kilg5"]
 [ext_resource type="Texture2D" uid="uid://bhgxi7igiihnh" path="res://Assets/Joy_Sprites/joy_front_still_1.png" id="7_wukv0"]
 [ext_resource type="Texture2D" uid="uid://cbithgxxb0jxm" path="res://Assets/Joy_Sprites/joy_front_still_2.png" id="8_hgvmy"]
@@ -225,6 +226,9 @@ position = Vector2(169, -105)
 [node name="PickUpObject2" parent="." instance=ExtResource("4_jwv4s")]
 position = Vector2(-221, -115)
 
+[node name="OranBerry" parent="." instance=ExtResource("4_hgvmy")]
+position = Vector2(152, 0)
+
 [node name="Table" parent="." instance=ExtResource("6_kilg5")]
 position = Vector2(-8, -294)
 
@@ -268,12 +272,13 @@ position = Vector2(0, 8)
 shape = SubResource("RectangleShape2D_b5kf5")
 
 [node name="Camera2D" type="Camera2D" parent="Player2"]
+visible = false
 limit_smoothed = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player2"]
 position = Vector2(2.38419e-07, 7)
 scale = Vector2(1.41034, 1.28833)
 sprite_frames = SubResource("SpriteFrames_cr6v8")
-animation = &"walk_right"
-frame_progress = 0.833161
+animation = &"walk_up"
+frame_progress = 0.503973
 speed_scale = 0.5
