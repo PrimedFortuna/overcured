@@ -5,6 +5,7 @@ const RUN_SPEED = 300
 var pickup_object = null  
 
 @onready var table = get_node("../Table")
+@onready var healstation = get_node("../HealStation")
 @onready var world = get_parent()  # Reference to the world (ensures proper reparenting)
 
 func _ready():
@@ -44,7 +45,6 @@ func interact(item = null):
 		move_child(pickup_object, 3)
 		pickup_object.visible = true  
 
-	# Picking up an item from the table
 	elif pickup_object == null and is_near_table():
 		var last_item = table.remove_item_from_table() 
 		if last_item:
@@ -56,14 +56,34 @@ func interact(item = null):
 			pickup_object.position = Vector2(2, 30)
 			move_child(pickup_object, 3)
 			pickup_object.visible = true  
+			
+	elif pickup_object == null and is_near_healstation():
+		var last_item = healstation.remove_item_from_healstation() 
+		if last_item:
+			print("Picked up from healstation:", last_item.name)
+			if last_item.get_parent():
+				last_item.get_parent().remove_child(last_item)
+			pickup_object = last_item
+			add_child(pickup_object)
+			pickup_object.position = Vector2(2, 30)
+			move_child(pickup_object, 3)
+			pickup_object.visible = true  
 
-	# Dropping an item
 	elif pickup_object != null:
 		if is_near_table():
 			print("Dropped on table:", pickup_object.name)
 			remove_child(pickup_object)
 			table.add_item_to_table(pickup_object)
 			pickup_object = null
+		elif is_near_healstation():
+			# Check if the item is a Pokeball before dropping it on the heal station
+			if pickup_object.is_in_group("pokeballs"):
+				print("Dropped on healstation:", pickup_object.name)
+				remove_child(pickup_object)
+				healstation.add_item_to_healstation(pickup_object)
+				pickup_object = null
+			else:
+				print("Can't drop this item on the healstation! Only Pokeballs can be dropped here.")
 		else:
 			print("Dropped on ground:", pickup_object.name)
 			if pickup_object.get_parent():  
@@ -74,7 +94,6 @@ func interact(item = null):
 			pickup_object.visible = true  
 			pickup_object = null
 
-# Finds the nearest pickup item in the scene
 func find_nearest_pickup_item() -> Node:
 	var nearest_item = null
 	var min_distance = 40  
@@ -93,4 +112,11 @@ func is_near_table() -> bool:
 		return global_position.distance_to(table.global_position) < 128
 	else:
 		print("Table not found!")
+		return false
+		
+func is_near_healstation() -> bool:
+	if healstation:
+		return global_position.distance_to(healstation.global_position) < 128
+	else:
+		print("Healstation not found!")
 		return false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://db6ji3v1uapgm"]
+[gd_scene load_steps=32 format=3 uid="uid://db6ji3v1uapgm"]
 
 [ext_resource type="Texture2D" uid="uid://b5wkawcgojnos" path="res://Assets/Floor.png" id="1_3mbwn"]
 [ext_resource type="Script" uid="uid://bp2xtipdcd5rl" path="res://Scripts/GameScene.gd" id="1_lohlh"]
@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://3pki2dc8xvn2" path="res://Assets/placeholdersprite.png" id="3_lohlh"]
 [ext_resource type="PackedScene" uid="uid://ctg0dh4n60hqv" path="res://Scenes/Items/OranBerry.tscn" id="4_hgvmy"]
 [ext_resource type="PackedScene" uid="uid://ncusujahgsdp" path="res://Scenes/Items/Pokeball.tscn" id="4_jwv4s"]
-[ext_resource type="PackedScene" uid="uid://b7rgo8hd8g4iq" path="res://Scenes/Table.tscn" id="6_kilg5"]
+[ext_resource type="PackedScene" uid="uid://b7rgo8hd8g4iq" path="res://Scenes/Objects/Table.tscn" id="6_kilg5"]
 [ext_resource type="Texture2D" uid="uid://bhgxi7igiihnh" path="res://Assets/Joy_Sprites/joy_front_still_1.png" id="7_wukv0"]
 [ext_resource type="Texture2D" uid="uid://cbithgxxb0jxm" path="res://Assets/Joy_Sprites/joy_front_still_2.png" id="8_hgvmy"]
 [ext_resource type="Texture2D" uid="uid://cifejc6dmbjkt" path="res://Assets/Joy_Sprites/Joy_front_left.png" id="8_xhjei"]
@@ -23,6 +23,8 @@
 [ext_resource type="Texture2D" uid="uid://b5usvwnmw64lp" path="res://Assets/Joy_Sprites/joy_right_right.png" id="20_p4lnl"]
 [ext_resource type="Texture2D" uid="uid://brjrlvmvxyrgt" path="res://Assets/Joy_Sprites/joy_up_left.png" id="21_6gwdq"]
 [ext_resource type="Texture2D" uid="uid://dejgib4kdkm8s" path="res://Assets/Joy_Sprites/joy_up_right.png" id="22_rsfko"]
+[ext_resource type="PackedScene" uid="uid://yf41jj64pimm" path="res://Scenes/Objects/HealStation.tscn" id="24_4v654"]
+[ext_resource type="Script" uid="uid://dbclnnypil4qw" path="res://Scenes/Objects/HealStation.gd" id="25_leul7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b5kf5"]
 size = Vector2(64, 80)
@@ -230,7 +232,11 @@ position = Vector2(-221, -115)
 position = Vector2(152, 0)
 
 [node name="Table" parent="." instance=ExtResource("6_kilg5")]
-position = Vector2(-8, -294)
+position = Vector2(136, -296)
+
+[node name="HealStation" parent="." instance=ExtResource("24_4v654")]
+position = Vector2(-184, -288)
+script = ExtResource("25_leul7")
 
 [node name="Player" type="CharacterBody2D" parent="."]
 position = Vector2(-7, -10)

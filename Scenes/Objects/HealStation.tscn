@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://yf41jj64pimm"]
+
+[ext_resource type="Texture2D" uid="uid://ci45h5uk7tjfv" path="res://Assets/pokehealingstation.png" id="1_6oxhi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_htf7d"]
+size = Vector2(168, 128)
+
+[node name="HealStation" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+texture = ExtResource("1_6oxhi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(4, -16)
+shape = SubResource("RectangleShape2D_htf7d")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+offset_left = -40.0
+offset_top = -32.0
+offset_right = 48.0
+offset_bottom = 56.0
