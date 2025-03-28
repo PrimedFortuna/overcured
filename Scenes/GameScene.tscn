@@ -1,0 +1,57 @@
+[gd_scene load_steps=9 format=3 uid="uid://db6ji3v1uapgm"]
+
+[ext_resource type="Texture2D" uid="uid://b5wkawcgojnos" path="res://Assets/Floor.png" id="1_3mbwn"]
+[ext_resource type="Script" uid="uid://cifuuoa1l86f7" path="res://Scripts/Player.gd" id="2_jwv4s"]
+[ext_resource type="Texture2D" uid="uid://3pki2dc8xvn2" path="res://Assets/placeholdersprite.png" id="3_lohlh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b5kf5"]
+size = Vector2(64, 80)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_haeiw"]
+normal = Vector2(0, 1)
+distance = -384.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_b5kf5"]
+normal = Vector2(-1, 0)
+distance = -392.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_hvuor"]
+distance = -384.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_i2arf"]
+normal = Vector2(1, 0)
+distance = -384.0
+
+[node name="Game" type="Node2D"]
+
+[node name="Floor" type="Sprite2D" parent="."]
+texture = ExtResource("1_3mbwn")
+
+[node name="Player" type="CharacterBody2D" parent="."]
+script = ExtResource("2_jwv4s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(0, 8)
+shape = SubResource("RectangleShape2D_b5kf5")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+position = Vector2(3.8147e-06, 7.62939e-06)
+scale = Vector2(0.24, 0.24)
+texture = ExtResource("3_lohlh")
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+limit_smoothed = true
+
+[node name="WorldBorder" type="StaticBody2D" parent="."]
+
+[node name="Top" type="CollisionShape2D" parent="WorldBorder"]
+shape = SubResource("WorldBoundaryShape2D_haeiw")
+
+[node name="Right" type="CollisionShape2D" parent="WorldBorder"]
+shape = SubResource("WorldBoundaryShape2D_b5kf5")
+
+[node name="Bottom" type="CollisionShape2D" parent="WorldBorder"]
+shape = SubResource("WorldBoundaryShape2D_hvuor")
+
+[node name="Left" type="CollisionShape2D" parent="WorldBorder"]
+shape = SubResource("WorldBoundaryShape2D_i2arf")
