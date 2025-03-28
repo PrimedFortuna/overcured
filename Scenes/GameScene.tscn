@@ -32,14 +32,14 @@ script = ExtResource("1_lohlh")
 position = Vector2(0, 1)
 texture = ExtResource("1_3mbwn")
 
-[node name="Table" parent="." instance=ExtResource("6_kilg5")]
-position = Vector2(-8, -294)
-
 [node name="PickUpObject" parent="." instance=ExtResource("4_jwv4s")]
 position = Vector2(169, -105)
 
 [node name="PickUpObject2" parent="." instance=ExtResource("4_jwv4s")]
 position = Vector2(-221, -115)
+
+[node name="Table" parent="." instance=ExtResource("6_kilg5")]
+position = Vector2(-8, -294)
 
 [node name="Player" type="CharacterBody2D" parent="."]
 position = Vector2(-7, -10)

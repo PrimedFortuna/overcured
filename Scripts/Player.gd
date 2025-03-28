@@ -1,10 +1,10 @@
 extends CharacterBody2D
 
-const SPEED = 150      
-const RUN_SPEED = 250  
+const SPEED = 180      
+const RUN_SPEED = 300  
 var pickup_object = null  
 
-@onready var table = get_node("Table")  # Adjust this path based on where the table is in your scene structure
+@onready var table = get_node("../Table")
 
 func _ready():
 	print("Player script is running!")
@@ -29,11 +29,20 @@ func _physics_process(_delta):
 	move_and_slide()
 
 func interact(item):
-	if item and pickup_object == null and global_position.distance_to(item.global_position) < 40: 
+	if item and pickup_object == null and global_position.distance_to(item.global_position) < 50: 
 		print("Picked up Item")
 		pickup_object = item
 		item.reparent(self)
 		item.position = Vector2(3, 30)
+
+	elif pickup_object == null and is_near_table():  #FILO
+		var last_item = table.remove_item_from_table()
+		if last_item:
+			print("Picked up from table:", last_item.name)
+			pickup_object = last_item
+			pickup_object.reparent(self)
+			pickup_object.position = Vector2(3, 30)
+
 	elif pickup_object != null:
 		if is_near_table():
 			print("Dropped:", pickup_object.name)
@@ -43,7 +52,7 @@ func interact(item):
 		else:
 			print("Dropped:", pickup_object.name)
 			pickup_object.reparent(get_parent())
-			get_parent().move_child(pickup_object,1)
+			get_parent().move_child(pickup_object, 1)
 			pickup_object.position = global_position 
 			pickup_object = null 
 
@@ -61,11 +70,10 @@ func find_nearest_pickup_item() -> Node:
 	return nearest_item
 
 func is_near_table() -> bool:
-
 	if table != null:
 		var table_position = table.global_position
 		var distance_to_table = global_position.distance_to(table_position)
-		return distance_to_table < 50
+		return distance_to_table < 128
 	else:
 		print("Table not found!")
 		return false

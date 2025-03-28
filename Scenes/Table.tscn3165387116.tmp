@@ -11,10 +11,12 @@ script = ExtResource("2_ab3gw")
 
 [node name="GridContainer" type="GridContainer" parent="."]
 anchors_preset = -1
-offset_left = -116.0
-offset_top = -67.0
-offset_right = 120.0
-offset_bottom = 8.0
+anchor_right = 0.968
+anchor_bottom = 0.676
+offset_left = -116.067
+offset_top = -66.96
+offset_right = -116.067
+offset_bottom = -66.96
 columns = 3
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
