@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://db6ji3v1uapgm"]
+[gd_scene load_steps=10 format=3 uid="uid://db6ji3v1uapgm"]
 
 [ext_resource type="Texture2D" uid="uid://b5wkawcgojnos" path="res://Assets/Floor.png" id="1_3mbwn"]
 [ext_resource type="Script" uid="uid://cifuuoa1l86f7" path="res://Scripts/Player.gd" id="2_jwv4s"]
 [ext_resource type="Texture2D" uid="uid://3pki2dc8xvn2" path="res://Assets/placeholdersprite.png" id="3_lohlh"]
+[ext_resource type="PackedScene" uid="uid://ncusujahgsdp" path="res://Scenes/PickUpObject.tscn" id="4_jwv4s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b5kf5"]
 size = Vector2(64, 80)
@@ -26,6 +27,9 @@ distance = -384.0
 
 [node name="Floor" type="Sprite2D" parent="."]
 texture = ExtResource("1_3mbwn")
+
+[node name="PickUpObject" parent="." instance=ExtResource("4_jwv4s")]
+position = Vector2(160, -104)
 
 [node name="Player" type="CharacterBody2D" parent="."]
 script = ExtResource("2_jwv4s")
