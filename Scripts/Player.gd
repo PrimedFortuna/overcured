@@ -6,8 +6,6 @@ var pickup_object = null
 
 @onready var table = get_node("/Table")
 @onready var game_scene = get_node(".")
-@onready var table = get_node("../Table")
-@onready var game_scene = get_node("..")
 
 func _ready():
 	print("Player script is running!")
