@@ -9,14 +9,6 @@ size = Vector2(238, 69)
 [node name="Table" type="Node2D"]
 script = ExtResource("2_ab3gw")
 
-[node name="GridContainer" type="GridContainer" parent="."]
-anchors_preset = -1
-offset_left = -116.0
-offset_top = -67.0
-offset_right = 120.0
-offset_bottom = 8.0
-columns = 3
-
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
@@ -26,3 +18,10 @@ texture = ExtResource("1_5ervl")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(0, -34.5)
 shape = SubResource("RectangleShape2D_ab3gw")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+offset_left = -116.0
+offset_top = -67.0
+offset_right = 120.0
+offset_bottom = 8.0
+columns = 3
