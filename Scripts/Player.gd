@@ -4,8 +4,6 @@ const SPEED = 180
 const RUN_SPEED = 300  
 var pickup_object = null  
 
-@onready var table = get_node("/Table")
-@onready var game_scene = get_node(".")
 @onready var table = get_node("../Table")
 @onready var game_scene = get_node("..")
 
