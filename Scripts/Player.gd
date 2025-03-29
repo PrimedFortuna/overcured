@@ -172,7 +172,6 @@ func find_nearest_table() -> Node:
 
 	for table in tables:
 		var distance = global_position.distance_to(table.global_position)
-		print("Checking distance:", distance)
 
 		if distance < min_distance:
 			nearest_table = table

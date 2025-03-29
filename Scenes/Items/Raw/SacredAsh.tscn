@@ -7,6 +7,7 @@
 radius = 24.0
 
 [node name="SacredAsh" type="Node2D"]
+scale = Vector2(2, 2)
 
 [node name="SacredAsh" type="Area2D" parent="."]
 script = ExtResource("1_55erj")
@@ -15,5 +16,5 @@ script = ExtResource("1_55erj")
 shape = SubResource("CircleShape2D_22o7o")
 
 [node name="Sprite2D" type="Sprite2D" parent="SacredAsh"]
-scale = Vector2(0.05, 0.05)
+scale = Vector2(1.5, 1.5)
 texture = ExtResource("2_22c12")

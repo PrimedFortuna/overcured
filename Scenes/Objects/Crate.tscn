@@ -19,10 +19,12 @@ texture = ExtResource("1_365xj")
 position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_365xj")
 
-[node name="SpawnPoint1" type="StaticBody2D" parent="."]
-position = Vector2(-32, -24)
-
-[node name="SpawnPoint2" type="StaticBody2D" parent="."]
-position = Vector2(32, -32)
-
 [node name="Timer" type="Timer" parent="."]
+
+[node name="BerriesContainer" type="Node2D" parent="."]
+
+[node name="SpawnPoint1" type="Node2D" parent="."]
+position = Vector2(-32, -40)
+
+[node name="SpawnPoint2" type="Node2D" parent="."]
+position = Vector2(32, -32)
