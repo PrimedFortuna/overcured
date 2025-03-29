@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://dl5a67bvx7se0"]
 
 [ext_resource type="Script" uid="uid://cf4ar0yigp4m1" path="res://Scripts/Settings.gd" id="1_w1nw0"]
-[ext_resource type="Texture2D" uid="uid://c367v57hqa7gq" path="res://Assets/max-southerton-highresscreenshot00000.jpg" id="2_mjqtt"]
+[ext_resource type="Texture2D" uid="uid://dvmqgvf5y1jkq" path="res://Assets/menubackground.png" id="2_w1nw0"]
 [ext_resource type="FontFile" uid="uid://b5igmqdsdnp5c" path="res://Assets/PixelatedEleganceRegular-ovyAA.ttf" id="3_ppjuv"]
 [ext_resource type="LabelSettings" uid="uid://c22o3c17axtal" path="res://Scripts/textbox.tres" id="4_ipgag"]
 
@@ -22,16 +22,10 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_w1nw0")
 
-[node name="TextureRect2" type="TextureRect" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 0.084
-anchor_bottom = 0.103
-offset_left = -4.0
-offset_right = 379.0
-offset_bottom = 238.45
-scale = Vector2(1.52, 1.68)
-texture = ExtResource("2_mjqtt")
+[node name="Background" type="TextureRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("2_w1nw0")
 
 [node name="Title2" type="Label" parent="."]
 layout_mode = 0
@@ -72,34 +66,33 @@ theme_override_fonts/font = ExtResource("3_ppjuv")
 theme_override_font_sizes/font_size = 32
 text = "Go Back"
 
-[node name="WIP" type="Button" parent="."]
+[node name="VSyncButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 753.0
-offset_top = 398.0
-offset_right = 1067.0
-offset_bottom = 489.0
+offset_left = 768.0
+offset_top = 424.0
+offset_right = 1082.0
+offset_bottom = 515.0
 theme_override_fonts/font = ExtResource("3_ppjuv")
 theme_override_font_sizes/font_size = 32
-text = "WIP SETTINGS
-"
+text = "V-SYNC"
 
-[node name="SoundButton" type="Button" parent="."]
+[node name="FullscreenButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 759.0
-offset_top = 538.0
-offset_right = 1073.0
-offset_bottom = 629.0
+offset_left = 768.0
+offset_top = 576.0
+offset_right = 1082.0
+offset_bottom = 667.0
 theme_override_fonts/font = ExtResource("3_ppjuv")
 theme_override_font_sizes/font_size = 32
-text = "SOUND
-"
+text = "FULLSCREEN"
 
 [node name="SkinButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 758.0
-offset_top = 689.0
-offset_right = 1070.0
-offset_bottom = 775.0
+offset_left = 768.0
+offset_top = 736.0
+offset_right = 1080.0
+offset_bottom = 822.0
 theme_override_fonts/font = ExtResource("3_ppjuv")
 theme_override_font_sizes/font_size = 32
-text = "SKIN"
+text = "PLAYER SKIN
+WIP"

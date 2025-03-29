@@ -128,6 +128,16 @@ sprite_frames = ExtResource("11_7rq2r")
 animation = &"idle_down"
 speed_scale = 0.5
 
+[node name="Input" parent="." instance=ExtResource("27_wp4mh")]
+position = Vector2(672, -136)
+rotation = 1.5708
+scale = Vector2(1.8, 1.8)
+
+[node name="Output" parent="." instance=ExtResource("27_wp4mh")]
+position = Vector2(672, 128)
+rotation = 1.5708
+scale = Vector2(1.8, 1.8)
+
 [node name="Player2" type="CharacterBody2D" parent="."]
 visible = false
 position = Vector2(-832, 416)
@@ -147,16 +157,6 @@ scale = Vector2(1.41034, 1.28833)
 sprite_frames = ExtResource("12_124qp")
 animation = &"walk_up"
 speed_scale = 0.5
-
-[node name="Input" parent="." instance=ExtResource("27_wp4mh")]
-position = Vector2(672, -136)
-rotation = 1.5708
-scale = Vector2(1.8, 1.8)
-
-[node name="Output" parent="." instance=ExtResource("27_wp4mh")]
-position = Vector2(672, 128)
-rotation = 1.5708
-scale = Vector2(1.8, 1.8)
 
 [node name="Player3" type="CharacterBody2D" parent="."]
 visible = false
