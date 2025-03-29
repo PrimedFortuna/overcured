@@ -1,8 +1,12 @@
-extends Area2D 
+extends Area2D
+
+var original_name: String  # To store the original name
 
 func _ready():
 	print("Pickup script is running!")
 	add_to_group("pickups")
+
+	original_name = name  # Store the original name in a variable
 
 	if "Pokeball" in name:
 		add_to_group("pokeballs")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://dt0i28jdndym"]
+[gd_scene load_steps=4 format=3 uid="uid://dxqdrmogebkem"]
 
 [ext_resource type="Script" uid="uid://claq5iss3m6nt" path="res://Scripts/PickUpObject.gd" id="1_7jsgm"]
 [ext_resource type="Texture2D" uid="uid://sydod57dfxlb" path="res://Assets/berry/aspear.png" id="2_wshsy"]

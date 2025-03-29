@@ -4,49 +4,51 @@ var max_items: int = 2  # Assuming the crafter only allows two items to be added
 var input_items: Array = []  # Store the input items here
 
 @export var craft_time: float = 5.0  # Declare and export the crafting time
-
 @onready var grid_container: GridContainer = $GridContainer  # Reference to the GridContainer node
 @onready var timer = $Timer  # Timer for crafting process
 
 # Recipe dictionary mapping item object reference combinations to crafted items
 var recipes = {
-	[&"OranBerry", &"OranBerry"]: "Potion",
-	[&"OranBerry", &"PechaBerry"]: "Antidote",
-	[&"OranBerry", &"ChestoBerry"]: "Awakening",
-	[&"OranBerry", &"RawstBerry"]: "BurnHeal",
-	[&"OranBerry", &"AspearBerry"]: "IceHeal",
-	[&"Potion", &"Potion"]: "SuperPotion",
-	[&"Potion", &"EnergyPowder"]: "SuperPotion",
-	[&"Potion", &"EnergyRoot"]: "HyperPotion",
-	[&"HyperPotion", &"HyperPotion"]: "MaxPotion",
-	[&"MaxPotion", &"HealPowder"]: "FullHeal",
-	[&"MaxPotion", &"RevivalHerb"]: "Revive",
-	[&"Revive", &"SacredAsh"]: "MaxRevive"
+	["OranBerry", "OranBerry"]: "Potion",
+	["OranBerry", "PechaBerry"]: "Antidote",
+	["OranBerry", "ChestoBerry"]: "Awakening",
+	["OranBerry", "RawstBerry"]: "BurnHeal",
+	["OranBerry", "AspearBerry"]: "IceHeal",
+	["Potion", "Potion"]: "SuperPotion",
+	["Potion", "EnergyPowder"]: "SuperPotion",
+	["Potion", "EnergyRoot"]: "HyperPotion",
+	["HyperPotion", "HyperPotion"]: "MaxPotion",
+	["MaxPotion", "HealPowder"]: "FullHeal",
+	["MaxPotion", "RevivalHerb"]: "Revive",
+	["Revive", "SacredAsh"]: "MaxRevive"
 }
 
 var crafted_item_name = ""  # Store crafted item for later
 
 func _ready():
 	add_to_group("crafters")
-
 func add_item_to_crafter(item: Node):
 	if input_items.size() < max_items:
-		# If the item already has a parent, remove it
 		if item.get_parent():
 			item.get_parent().remove_child(item)
 
-		# Add the item to the crafter and the grid container
+		print("Before adding, item.name:", item.name, " | item:", item)
+
 		input_items.append(item)
 		grid_container.add_child(item)
 
-		# Set visibility and scale for the item
+		print("After adding, item.name:", item.name, " | item:", item)
+
 		item.visible = true
 		item.scale = Vector2(1, 1)
 		item.position = Vector2.ZERO
 
-		# Update item positions inside the grid container
 		update_item_positions()
 		print("Item added to crafter:", item.name)
+
+		if input_items.size() == max_items:
+			print("Starting crafting process...")
+			start_crafting()
 	else:
 		print("Crafter is full, can't add more items.")
 
@@ -85,58 +87,58 @@ func update_item_positions():
 			start_y + row * (item_size_y + padding)
 		)
 
-# Crafting logic
 func start_crafting():
-	# Collect the names for both input items
 	var item_references = []
 	for item in input_items:
-		item_references.append(item.name)
+		item_references.append(item.original_name)  # Use stored original name
 
-	# Sort item names to ensure consistent recipe matching
 	item_references.sort()
+	print("Checking recipe for:", item_references)
 
-	# Find the matching recipe
 	var possible_recipes = []
 	for recipe_items in recipes.keys():
-		# Sort recipe items to ensure consistent comparison
 		var sorted_recipe = recipe_items.duplicate()
 		sorted_recipe.sort()
-
-		# If the sorted item names match the sorted recipe items, store the recipe
 		if item_references == sorted_recipe:
 			possible_recipes.append(recipes[recipe_items])
 
 	if possible_recipes.size() > 0:
-		# Start crafting the first valid recipe
 		crafted_item_name = possible_recipes[0]
-		timer.start(craft_time)  # Start crafting process
+		_on_Timer_timeout()
+		timer.start(craft_time)
 		print("Crafting:", crafted_item_name)
 	else:
-		# No valid recipe, drop the items
 		print("Invalid recipe:", item_references)
 		drop_items()
 
-# This function will be called when the timer completes
+
 func _on_Timer_timeout():
-	# Remove input items from the crafter
+	print("Crafting complete!")  # Debugging
+
+	# Remove and free items from the crafter
 	for item in input_items:
 		if item.get_parent():
 			item.get_parent().remove_child(item)
 			item.queue_free()
 
+	# Clear the input_items array
 	input_items.clear()
 
-	# Instantiate the crafted item if crafting was successful
+	# Create and drop the crafted item
 	if crafted_item_name != "":
 		var crafted_item = load("res://Scenes/Items/%s.tscn" % crafted_item_name).instantiate()
-		crafted_item.global_position = global_position
+		crafted_item.global_position = global_position + Vector2(0, 70)  # Drop 50 units below the crafter
 		get_parent().add_child(crafted_item)
-
 		print("Crafted:", crafted_item_name)
-		crafted_item_name = ""  # Reset for next crafting
 
-# Drop the input items if no valid recipe is found
+		# Clear the GridContainer
+		grid_container.remove_child($GridContainer)
+
+		# Reset crafted item name for next use
+		crafted_item_name = ""
+
 func drop_items():
+	print("Dropping items, invalid recipe")
 	for item in input_items:
 		if item.get_parent():
 			item.get_parent().remove_child(item)

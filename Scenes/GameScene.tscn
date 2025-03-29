@@ -76,19 +76,19 @@ shape = SubResource("RectangleShape2D_leul7")
 position = Vector2(88, 352)
 
 [node name="OranBerry" parent="Crate" instance=ExtResource("4_hgvmy")]
-position = Vector2(-32, -32)
+position = Vector2(21, -33)
 
 [node name="OranBerry2" parent="Crate" instance=ExtResource("4_hgvmy")]
-position = Vector2(24, -32)
+position = Vector2(-27, -27)
 
 [node name="Crate2" parent="." instance=ExtResource("8_leul7")]
 position = Vector2(-144, 352)
 
-[node name="OranBerry" parent="Crate2" instance=ExtResource("4_hgvmy")]
-position = Vector2(-32, -32)
-
 [node name="ChestoBerry" parent="Crate2" instance=ExtResource("5_124qp")]
 position = Vector2(32, -32)
+
+[node name="OranBerry" parent="Crate2" instance=ExtResource("4_hgvmy")]
+position = Vector2(-25, -28)
 
 [node name="PickUpObject" parent="." instance=ExtResource("4_jwv4s")]
 position = Vector2(312, -64)
