@@ -29,6 +29,7 @@ func add_item_to_table(item: Node):
 func remove_item_from_table() -> Node:
 	if pickup_items.size() > 0:
 		var last_item = pickup_items.pop_back()  
+		last_item.rotation_degrees = 0
 		grid_container.remove_child(last_item)  
 		update_item_positions()  
 		last_item.visible = true  

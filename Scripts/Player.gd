@@ -65,13 +65,14 @@ func interact(item = null):
 
 	var nearest_crafter = find_nearest_crafter()  # Local variable, no shadowing
 
-
 	# If holding an item and near a crafter, drop the item into the crafter
 	if pickup_object and nearest_crafter:
 		print("Dropping", pickup_object.name, "into Crafter")
 		remove_child(pickup_object)  # Remove from player
 		nearest_crafter.add_item_to_crafter(pickup_object)  # Give to Crafter
 		print("Item added to crafter.")
+		# Scale down item when added to crafter
+		pickup_object.scale = Vector2(0.4, 0.4)
 		pickup_object = null  # Player is now empty
 		return
 
@@ -128,6 +129,7 @@ func interact(item = null):
 			remove_child(pickup_object)
 			nearest_table.add_item_to_table(pickup_object)
 			print("Item new parent after adding to table:", pickup_object.get_parent())
+			# Removed rotation change, no longer rotate item
 			pickup_object.scale = Vector2(1.2, 1.2)
 			pickup_object = null
 		elif is_near_healstation():
