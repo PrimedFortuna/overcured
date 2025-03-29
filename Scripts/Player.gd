@@ -69,9 +69,7 @@ func interact(item = null):
 	if pickup_object and nearest_crafter:
 		print("Dropping", pickup_object.name, "into Crafter")
 		remove_child(pickup_object)  # Remove from player
-		nearest_crafter.add_item_to_crafter(pickup_object)  # Give to Crafter
-		print("Item added to crafter.")
-		# Scale down item when added to crafter
+		nearest_crafter.add_item_to_crafter(pickup_object)
 		pickup_object.scale = Vector2(0.4, 0.4)
 		pickup_object = null  # Player is now empty
 		return

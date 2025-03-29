@@ -32,12 +32,8 @@ func add_item_to_crafter(item: Node):
 		if item.get_parent():
 			item.get_parent().remove_child(item)
 
-		print("Before adding, item.name:", item.name, " | item:", item)
-
 		input_items.append(item)
 		grid_container.add_child(item)
-
-		print("After adding, item.name:", item.name, " | item:", item)
 
 		item.visible = true
 		item.scale = Vector2(1, 1)
@@ -138,17 +134,21 @@ func _on_Timer_timeout():
 func drop_items():
 	print("Dropping items, invalid recipe")
 	
-	# The position where we want to drop the items
-	var drop_position = global_position + Vector2(0, -50)  # Adjust the offset if needed
+	# Ensure we have a valid parent (Game node)
+	var game_scene = get_tree().get_root().get_node("Game")  # Adjust this if needed
+	
+	if not game_scene:
+		print("Error: Could not find the Game node!")
+		return
+
+	var drop_position = global_position + Vector2(0, 50)  # Drop slightly below the crafter
 	
 	for item in input_items:
 		if item.get_parent():
-			# Set the item position to be the same as the crafted item
-			item.global_position = drop_position
-
-			# Remove the item from the crafter and free it
 			item.get_parent().remove_child(item)
-			item.queue_free()
+			game_scene.add_child(item)
+			item.global_position = drop_position
+			item.visible = true
+			item.scale = Vector2(1, 1)
 
-	# Clear the input items list
 	input_items.clear()

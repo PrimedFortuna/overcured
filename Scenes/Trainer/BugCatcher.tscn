@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://vpa5rnvgachl"]
+
+[ext_resource type="SpriteFrames" uid="uid://bi0idbbcvumal" path="res://Scenes/sprite/bugcatcher.tres" id="1_tnu0x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2w2w2"]
+size = Vector2(53.3333, 66.6667)
+
+[node name="BugCatcher" type="Node2D"]
+scale = Vector2(2, 2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 8)
+shape = SubResource("RectangleShape2D_2w2w2")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(2.38419e-07, 7)
+scale = Vector2(1.5, 1.5)
+sprite_frames = ExtResource("1_tnu0x")
+animation = &"walk_right_speed"
+speed_scale = 0.5
