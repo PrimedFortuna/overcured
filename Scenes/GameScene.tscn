@@ -37,7 +37,7 @@ size = Vector2(464, 61.5384)
 size = Vector2(473, 80)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b5kf5"]
-size = Vector2(48.8889, 71.1111)
+size = Vector2(53.3333, 66.6667)
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_lohlh")
@@ -115,7 +115,7 @@ scale = Vector2(1.8, 1.8)
 script = ExtResource("2_jwv4s")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-position = Vector2(1.66667, 10)
+position = Vector2(-0.555551, 12.2222)
 shape = SubResource("RectangleShape2D_b5kf5")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
@@ -125,8 +125,7 @@ limit_smoothed = true
 position = Vector2(2.38419e-07, 7)
 scale = Vector2(1.41034, 1.28833)
 sprite_frames = ExtResource("11_7rq2r")
-animation = &"walk_up"
-frame_progress = 0.279853
+animation = &"idle_down"
 speed_scale = 0.5
 
 [node name="Player2" type="CharacterBody2D" parent="."]

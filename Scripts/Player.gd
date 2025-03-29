@@ -6,22 +6,54 @@ var pickup_object = null
 
 @onready var healstation = get_node("../HealStation")
 @onready var world = get_parent()
+@onready var anim = get_node("AnimatedSprite2D")
+var last_direction = null
 
 func _ready():
 	print("Tables in group:", get_tree().get_nodes_in_group("tables"))
-
 
 func _physics_process(_delta):
 	var direction = Vector2.ZERO
 
 	if Input.is_action_pressed("ui_right"):
 		direction.x += 1
+		last_direction = "right"
+		if Input.is_action_pressed("ui_shift"):
+			anim.play("walk_right_speed")
+		else:
+			anim.play("walk_right")
 	if Input.is_action_pressed("ui_left"):
 		direction.x -= 1
+		last_direction = "left"
+		if Input.is_action_pressed("ui_shift"):
+			anim.play("walk_left_speed")
+		else:
+			anim.play("walk_left")
+			
 	if Input.is_action_pressed("ui_down"):
 		direction.y += 1
+		last_direction = "down"
+		if Input.is_action_pressed("ui_shift"):
+			anim.play("walk_down_speed")
+		else:
+			anim.play("walk_down")
 	if Input.is_action_pressed("ui_up"):
 		direction.y -= 1
+		last_direction = "up"
+		if Input.is_action_pressed("ui_shift"):
+			anim.play("walk_up_speed")
+		else:
+			anim.play("walk_up")
+
+	if direction == Vector2.ZERO:
+		if last_direction == "down":
+			anim.play("idle_down")
+		elif last_direction == "up":
+			anim.play("idle_up")
+		elif last_direction == "left":
+			anim.play("idle_left")
+		elif last_direction == "right":
+			anim.play("idle_right")
 
 	var current_speed = SPEED if not Input.is_action_pressed("ui_shift") else RUN_SPEED
 	velocity = direction.normalized() * current_speed
@@ -122,7 +154,6 @@ func find_nearest_table() -> Node:
 	var min_distance = 128
 	var tables = get_tree().get_nodes_in_group("tables")
 
-
 	for table in tables:
 		var distance = global_position.distance_to(table.global_position)
 		print("Checking distance:", distance)
@@ -132,8 +163,6 @@ func find_nearest_table() -> Node:
 			min_distance = distance
 
 	return nearest_table
-
-
 
 func is_near_healstation() -> bool:
 	if healstation:
