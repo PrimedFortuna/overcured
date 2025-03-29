@@ -7,14 +7,14 @@
 [ext_resource type="PackedScene" uid="uid://ncusujahgsdp" path="res://Scenes/Items/Pokeball.tscn" id="4_jwv4s"]
 [ext_resource type="PackedScene" uid="uid://cafnptu3t81yt" path="res://Scenes/Items/Berries/ChestoBerry.tscn" id="5_124qp"]
 [ext_resource type="PackedScene" uid="uid://b7rgo8hd8g4iq" path="res://Scenes/Objects/Table.tscn" id="6_kilg5"]
-[ext_resource type="PackedScene" uid="uid://cjbqxcu752l23" path="res://Scenes/Objects/Crate.tscn" id="8_leul7"]
+[ext_resource type="PackedScene" path="res://Scenes/Objects/Crate.tscn" id="8_leul7"]
 [ext_resource type="SpriteFrames" uid="uid://phhfeex1qlvu" path="res://Scenes/sprite/brendan.tres" id="11_7rq2r"]
 [ext_resource type="SpriteFrames" uid="uid://b4t5ru6jdsnf7" path="res://Scenes/sprite/joy.tres" id="12_124qp"]
 [ext_resource type="PackedScene" uid="uid://bfviolr204khv" path="res://Scenes/Items/Berries/PechaBerry.tscn" id="17_yhlfj"]
 [ext_resource type="PackedScene" uid="uid://yf41jj64pimm" path="res://Scenes/Objects/HealStation.tscn" id="24_4v654"]
-[ext_resource type="Script" uid="uid://dbclnnypil4qw" path="res://Scripts/HealStation.gd" id="25_leul7"]
-[ext_resource type="PackedScene" uid="uid://b1o2a7a3qekkj" path="res://Scenes/Objects/RedTable.tscn" id="27_wp4mh"]
-[ext_resource type="PackedScene" uid="uid://clt2d71t25xht" path="res://Scenes/Objects/Crafter.tscn" id="28_y0yaw"]
+[ext_resource type="Script" path="res://Scripts/HealStation.gd" id="25_leul7"]
+[ext_resource type="PackedScene" path="res://Scenes/Objects/RedTable.tscn" id="27_wp4mh"]
+[ext_resource type="PackedScene" path="res://Scenes/Objects/Crafter.tscn" id="28_y0yaw"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_haeiw"]
 normal = Vector2(0, 1)

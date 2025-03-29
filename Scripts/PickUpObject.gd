@@ -61,3 +61,29 @@ func _ready():
 
 	if "CheriBerry" in name:
 		add_to_group("paralyzeHeal")
+		
+	if "HyperPotion" in name:
+		add_to_group("fullHeal")
+		
+	if "HealPowder" in name:
+		add_to_group("fullHeal")
+
+	if "MaxPotion" in name:
+		add_to_group("fullRestore")		
+		
+	if "HealPowder" in name:
+		add_to_group("fullRestore")
+		
+	if "MaxPotion" in name:
+		add_to_group("Revive")	
+		
+	if "RevivalHerb" in name:
+		add_to_group("Revive")
+		
+	if "Revive" in name:
+		add_to_group("Maxrevive")	
+		
+	if "SacredAsh" in name:
+		add_to_group("Maxrevive")			
+
+		

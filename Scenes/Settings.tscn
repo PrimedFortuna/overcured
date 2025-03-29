@@ -23,6 +23,7 @@ grow_vertical = 2
 script = ExtResource("1_w1nw0")
 
 [node name="Background" type="TextureRect" parent="."]
+layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 texture = ExtResource("2_w1nw0")
