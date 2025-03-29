@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://b32iyqwkeyj4t"]
+
+[ext_resource type="Script" uid="uid://claq5iss3m6nt" path="res://Scripts/PickUpObject.gd" id="1_ey6xt"]
+[ext_resource type="Texture2D" uid="uid://jtrtf1i4v1uq" path="res://Assets/heal/energy-powder.png" id="2_gyrmu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h1ie1"]
+radius = 24.0
+
+[node name="RawstBerry" type="Node2D"]
+
+[node name="RawstBerry" type="Area2D" parent="."]
+script = ExtResource("1_ey6xt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RawstBerry"]
+shape = SubResource("CircleShape2D_h1ie1")
+
+[node name="Sprite2D" type="Sprite2D" parent="RawstBerry"]
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_gyrmu")
