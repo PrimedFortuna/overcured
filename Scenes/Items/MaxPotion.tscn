@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://cm0n3ns6am0vd"]
+
+[ext_resource type="Script" uid="uid://claq5iss3m6nt" path="res://Scripts/PickUpObject.gd" id="1_116u8"]
+[ext_resource type="Texture2D" uid="uid://bkdywffec7asr" path="res://Assets/potion/max-potion.png" id="2_sqhhn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xyvbo"]
+radius = 24.0
+
+[node name="MaxPotion" type="Node2D"]
+
+[node name="MaxPotion" type="Area2D" parent="."]
+script = ExtResource("1_116u8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MaxPotion"]
+shape = SubResource("CircleShape2D_xyvbo")
+
+[node name="Sprite2D" type="Sprite2D" parent="MaxPotion"]
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_sqhhn")

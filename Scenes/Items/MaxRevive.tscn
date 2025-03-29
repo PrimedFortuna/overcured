@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dg418tl5d5mom"]
+
+[ext_resource type="Script" uid="uid://claq5iss3m6nt" path="res://Scripts/PickUpObject.gd" id="1_4bsri"]
+[ext_resource type="Texture2D" uid="uid://bjwqw6od0vnrk" path="res://Assets/heal/max-revive.png" id="2_b7vq5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gn1b2"]
+radius = 24.0
+
+[node name="MaxRevive" type="Node2D"]
+
+[node name="MaxRevive" type="Area2D" parent="."]
+script = ExtResource("1_4bsri")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MaxRevive"]
+shape = SubResource("CircleShape2D_gn1b2")
+
+[node name="Sprite2D" type="Sprite2D" parent="MaxRevive"]
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_b7vq5")

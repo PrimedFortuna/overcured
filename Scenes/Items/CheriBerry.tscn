@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://c8kadv773xfpj"]
+
+[ext_resource type="Script" uid="uid://claq5iss3m6nt" path="res://Scripts/PickUpObject.gd" id="1_v8eo5"]
+[ext_resource type="Texture2D" uid="uid://bdkgdrdsli3e2" path="res://Assets/berry/cheri.png" id="2_f2n3t"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_687sx"]
+radius = 24.0
+
+[node name="CheriBerry" type="Node2D"]
+
+[node name="CheriBerry" type="Area2D" parent="."]
+script = ExtResource("1_v8eo5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CheriBerry"]
+shape = SubResource("CircleShape2D_687sx")
+
+[node name="Sprite2D" type="Sprite2D" parent="CheriBerry"]
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_f2n3t")
