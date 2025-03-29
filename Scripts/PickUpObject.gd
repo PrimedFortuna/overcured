@@ -51,3 +51,9 @@ func _ready():
 		
 	if "AspearBerry" in name:
 		add_to_group("iceHeal")
+		
+	if "OranBerry" in name:
+		add_to_group("paralyzeHeal")
+
+	if "CheriBerry" in name:
+		add_to_group("paralyzeHeal")

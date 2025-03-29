@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://b8mkqqer82r15"]
+
+[ext_resource type="Script" uid="uid://claq5iss3m6nt" path="res://Scripts/PickUpObject.gd" id="1_l3p0i"]
+[ext_resource type="Texture2D" uid="uid://cn2si7ymn4epy" path="res://Assets/heal/heal-powder.png" id="2_assyl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8dkap"]
+radius = 24.0
+
+[node name="HealPowder" type="Node2D"]
+
+[node name="HealPowder" type="Area2D" parent="."]
+script = ExtResource("1_l3p0i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HealPowder"]
+shape = SubResource("CircleShape2D_8dkap")
+
+[node name="Sprite2D" type="Sprite2D" parent="HealPowder"]
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_assyl")

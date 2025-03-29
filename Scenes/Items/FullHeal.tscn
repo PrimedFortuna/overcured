@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://idouylcpn5vv"]
+
+[ext_resource type="Script" uid="uid://claq5iss3m6nt" path="res://Scripts/PickUpObject.gd" id="1_nocpp"]
+[ext_resource type="Texture2D" uid="uid://bhbhdjw4k5kil" path="res://Assets/status/full-heal.png" id="2_xy6ko"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lwdmb"]
+radius = 24.0
+
+[node name="FullHeal" type="Node2D"]
+
+[node name="FullHeal" type="Area2D" parent="."]
+script = ExtResource("1_nocpp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FullHeal"]
+shape = SubResource("CircleShape2D_lwdmb")
+
+[node name="Sprite2D" type="Sprite2D" parent="FullHeal"]
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_xy6ko")
