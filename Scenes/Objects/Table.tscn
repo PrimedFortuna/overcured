@@ -12,6 +12,7 @@ script = ExtResource("2_ab3gw")
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+visible = false
 scale = Vector2(0.9, 0.9)
 texture = ExtResource("1_5ervl")
 

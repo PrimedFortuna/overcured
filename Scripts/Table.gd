@@ -4,6 +4,9 @@ var max_items: int = 6
 var pickup_items: Array = []  
 
 @onready var grid_container: GridContainer = $GridContainer  
+	
+func _ready():
+	add_to_group("tables")
 
 func add_item_to_table(item: Node):
 	if pickup_items.size() < max_items:
