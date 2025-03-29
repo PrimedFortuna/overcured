@@ -8,6 +8,7 @@ var berry_scenes = []  # To store paths to all berry scenes
 @onready var berries_container = $BerriesContainer  # Holds the spawned berries
 
 func _ready():
+	# Load berry scenes from the directory
 	var berry_folder = "res://Scenes/Items/Raw/"
 	var dir = DirAccess.open(berry_folder)
 
@@ -15,20 +16,21 @@ func _ready():
 		dir.list_dir_begin()
 		var file_name = dir.get_next()
 		while file_name != "":
-			if file_name.ends_with(".tscn"):
+			if file_name.ends_with(".tscn"):  # Only load scene files
 				berry_scenes.append(berry_folder + file_name)
 			file_name = dir.get_next()
 
 	if berry_scenes.size() == 0:
 		print("No berries found in folder!")
 
+	# Start the spawn timer
 	timer.wait_time = spawn_interval
 	timer.timeout.connect(spawn_berry)
 	timer.start()
-	
+
 func spawn_berry():
-	# Check if there are already berries in the crate
-	if berries_container.get_child_count() >= 2:  # Max 2 berries (one per spawn point)
+	# Stop spawning if both spawn points are occupied
+	if berries_container.get_child_count() >= 2:
 		print("Both spawn points occupied, skipping spawn.")
 		return
 
@@ -36,17 +38,13 @@ func spawn_berry():
 		print("No berries available to spawn!")
 		return
 
+	# Load a random berry scene
 	var berry_scene_path = berry_scenes[randi() % berry_scenes.size()]
 	var berry_instance = load(berry_scene_path).instantiate()
 
-
-	var spawn_point = null
-	if berries_container.get_child_count() == 0:
-		spawn_point = spawnpoints[0]
-	else:
-		spawn_point = spawnpoints[1]
-		
-	berry_instance.global_position = spawn_point.global_position
+	# Pick the correct spawn point (first free spot)
+	var spawn_point = spawnpoints[berries_container.get_child_count()]
+	berry_instance.position = spawn_point.position  # Local position inside the crate
 
 	# Add the berry to the crate's container
 	berries_container.add_child(berry_instance)
