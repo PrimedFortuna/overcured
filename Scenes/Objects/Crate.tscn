@@ -17,6 +17,8 @@ texture = ExtResource("1_365xj")
 position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_365xj")
 
-[node name="GridContainer" type="GridContainer" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="SpawnPoint1" type="StaticBody2D" parent="."]
+position = Vector2(-32, -24)
+
+[node name="SpawmPoint2" type="StaticBody2D" parent="."]
+position = Vector2(32, -32)

@@ -131,24 +131,31 @@ func _on_Timer_timeout():
 
 		crafted_item_name = ""
 
-func drop_items():
+func drop_items(): 
 	print("Dropping items, invalid recipe")
-	
-	# Ensure we have a valid parent (Game node)
-	var game_scene = get_tree().get_root().get_node("Game")  # Adjust this if needed
-	
+
+	var game_scene = get_tree().get_root().get_node("Game")
 	if not game_scene:
-		print("Error: Could not find the Game node!")
+		print("Error: Game node not found!")
 		return
 
-	var drop_position = global_position + Vector2(0, 50)  # Drop slightly below the crafter
-	
-	for item in input_items:
-		if item.get_parent():
-			item.get_parent().remove_child(item)
-			game_scene.add_child(item)
-			item.global_position = drop_position
-			item.visible = true
-			item.scale = Vector2(1, 1)
+	var drop_position = global_position + Vector2(0, 50)
+
+	for i in range(input_items.size()):
+		var item = input_items[i]
+
+		# Create a duplicate of the item before reparenting
+		var new_item = item.duplicate()
+		new_item.scale = Vector2(2, 2)  
+		new_item.visible = true
+
+		# Remove original from parent and free it
+		item.get_parent().remove_child(item)
+		item.queue_free()  # Ensure the original is deleted to remove old GridContainer scaling
+
+		# Add the duplicated item to the game scene
+		game_scene.add_child(new_item)
+		new_item.global_position = drop_position + Vector2(10 * i, 0)  # Slight offset to avoid overlap
+		new_item.queue_redraw()
 
 	input_items.clear()
