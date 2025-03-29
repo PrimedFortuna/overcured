@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://db6ji3v1uapgm"]
+[gd_scene load_steps=35 format=3 uid="uid://db6ji3v1uapgm"]
 
 [ext_resource type="Script" uid="uid://bp2xtipdcd5rl" path="res://Scripts/GameScene.gd" id="1_lohlh"]
 [ext_resource type="Texture2D" uid="uid://hq1i1r3pw5q4" path="res://Assets/background.png" id="2_4v654"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://b7rgo8hd8g4iq" path="res://Scenes/Objects/Table.tscn" id="6_kilg5"]
 [ext_resource type="Texture2D" uid="uid://bhgxi7igiihnh" path="res://Assets/Joy_Sprites/joy_front_still_1.png" id="7_wukv0"]
 [ext_resource type="Texture2D" uid="uid://cbithgxxb0jxm" path="res://Assets/Joy_Sprites/joy_front_still_2.png" id="8_hgvmy"]
+[ext_resource type="PackedScene" uid="uid://cjbqxcu752l23" path="res://Scenes/Objects/Crate.tscn" id="8_leul7"]
 [ext_resource type="Texture2D" uid="uid://cifejc6dmbjkt" path="res://Assets/Joy_Sprites/Joy_front_left.png" id="8_xhjei"]
 [ext_resource type="Texture2D" uid="uid://bteob080w63bk" path="res://Assets/Joy_Sprites/joy_front_right.png" id="9_6vvcf"]
 [ext_resource type="Texture2D" uid="uid://bv2it6larf6t3" path="res://Assets/Joy_Sprites/joy_left_still_1.png" id="9_ebcm8"]
@@ -28,21 +29,6 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b5kf5"]
 size = Vector2(48.8889, 71.1111)
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_haeiw"]
-normal = Vector2(0, 1)
-distance = -504.0
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_b5kf5"]
-normal = Vector2(-1, 0)
-distance = -624.0
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_hvuor"]
-distance = -480.0
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_i2arf"]
-normal = Vector2(1, 0)
-distance = -888.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_cr6v8"]
 animations = [{
@@ -215,6 +201,27 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_haeiw"]
+normal = Vector2(0, 1)
+distance = -504.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_b5kf5"]
+normal = Vector2(-1, 0)
+distance = -624.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_hvuor"]
+distance = -480.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_i2arf"]
+normal = Vector2(1, 0)
+distance = -888.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4v654"]
+size = Vector2(464, 61.5384)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_leul7"]
+size = Vector2(473, 80)
+
 [node name="Game" type="Node2D"]
 script = ExtResource("1_lohlh")
 
@@ -223,14 +230,20 @@ position = Vector2(-8.00007, -12)
 scale = Vector2(0.916667, 0.925926)
 texture = ExtResource("2_4v654")
 
+[node name="Crate" parent="." instance=ExtResource("8_leul7")]
+position = Vector2(88, 352)
+
 [node name="PickUpObject" parent="." instance=ExtResource("4_jwv4s")]
-position = Vector2(169, -105)
+position = Vector2(656, -80)
 
 [node name="PickUpObject2" parent="." instance=ExtResource("4_jwv4s")]
-position = Vector2(-221, -115)
+position = Vector2(656, -184)
 
 [node name="OranBerry" parent="." instance=ExtResource("4_hgvmy")]
-position = Vector2(152, 0)
+position = Vector2(64, 320)
+
+[node name="OranBerry2" parent="." instance=ExtResource("4_hgvmy")]
+position = Vector2(112, 320)
 
 [node name="Table" parent="." instance=ExtResource("6_kilg5")]
 position = Vector2(-512, -192)
@@ -239,7 +252,7 @@ position = Vector2(-512, -192)
 position = Vector2(-512, 216)
 
 [node name="HealStation" parent="." instance=ExtResource("24_4v654")]
-position = Vector2(0, -408)
+position = Vector2(128, -408)
 script = ExtResource("25_leul7")
 
 [node name="Player" type="CharacterBody2D" parent="."]
@@ -258,20 +271,6 @@ texture = ExtResource("3_lohlh")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 limit_smoothed = true
-
-[node name="WorldBorder" type="StaticBody2D" parent="."]
-
-[node name="Top" type="CollisionShape2D" parent="WorldBorder"]
-shape = SubResource("WorldBoundaryShape2D_haeiw")
-
-[node name="Right" type="CollisionShape2D" parent="WorldBorder"]
-shape = SubResource("WorldBoundaryShape2D_b5kf5")
-
-[node name="Bottom" type="CollisionShape2D" parent="WorldBorder"]
-shape = SubResource("WorldBoundaryShape2D_hvuor")
-
-[node name="Left" type="CollisionShape2D" parent="WorldBorder"]
-shape = SubResource("WorldBoundaryShape2D_i2arf")
 
 [node name="Player2" type="CharacterBody2D" parent="."]
 visible = false
@@ -293,3 +292,27 @@ sprite_frames = SubResource("SpriteFrames_cr6v8")
 animation = &"walk_up"
 frame_progress = 0.503973
 speed_scale = 0.5
+
+[node name="WorldBorder" type="StaticBody2D" parent="."]
+
+[node name="Top" type="CollisionShape2D" parent="WorldBorder"]
+shape = SubResource("WorldBoundaryShape2D_haeiw")
+
+[node name="Right" type="CollisionShape2D" parent="WorldBorder"]
+shape = SubResource("WorldBoundaryShape2D_b5kf5")
+
+[node name="Bottom" type="CollisionShape2D" parent="WorldBorder"]
+shape = SubResource("WorldBoundaryShape2D_hvuor")
+
+[node name="Left" type="CollisionShape2D" parent="WorldBorder"]
+shape = SubResource("WorldBoundaryShape2D_i2arf")
+
+[node name="BalcãoTop" type="CollisionShape2D" parent="WorldBorder"]
+position = Vector2(512, -328)
+scale = Vector2(1, 2.08)
+shape = SubResource("RectangleShape2D_4v654")
+
+[node name="BalcãoBot" type="CollisionShape2D" parent="WorldBorder"]
+position = Vector2(512, 348.8)
+scale = Vector2(1, 2.08)
+shape = SubResource("RectangleShape2D_leul7")

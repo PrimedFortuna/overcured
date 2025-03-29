@@ -31,7 +31,7 @@ func interact(item = null):
 	if item == null:
 		item = find_nearest_pickup_item()
 
-	if item and pickup_object == null and global_position.distance_to(item.global_position) < 50:
+	if item and pickup_object == null and global_position.distance_to(item.global_position) < 200:
 		print("Picked up Item:", item.name)
 		if item.get_parent():
 			item.get_parent().remove_child(item)
@@ -106,7 +106,7 @@ func interact(item = null):
 
 func find_nearest_pickup_item() -> Node:
 	var nearest_item = null
-	var min_distance = 40
+	var min_distance = 200
 
 	for item in get_tree().get_nodes_in_group("pickups"):
 		if item and item is Node2D:
