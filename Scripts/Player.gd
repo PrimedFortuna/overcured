@@ -8,12 +8,11 @@ var pickup_object = null
 @onready var world = get_parent()
 @onready var anim = get_node("./Joy")
 var last_direction = null
-var nearest_crafter = find_nearest_crafter()
-
 
 func _physics_process(_delta):
 	var direction = Vector2.ZERO
 
+	# Handle movement inputs and play the correct animation
 	if Input.is_action_pressed("ui_right"):
 		direction.x += 1
 		last_direction = "right"
@@ -44,6 +43,7 @@ func _physics_process(_delta):
 		else:
 			anim.play("walk_up")
 
+	# Handle idle animations if no movement input is detected
 	if direction == Vector2.ZERO:
 		if last_direction == "down":
 			anim.play("idle_down")
@@ -54,20 +54,24 @@ func _physics_process(_delta):
 		elif last_direction == "right":
 			anim.play("idle_right")
 
+	# Update velocity for movement
 	var current_speed = SPEED if not Input.is_action_pressed("ui_shift") else RUN_SPEED
 	velocity = direction.normalized() * current_speed
 	move_and_slide()
+
 func interact(item = null):
 	if item == null:
 		item = find_nearest_pickup_item()
 
-	var nearest_crafter = find_nearest_crafter()
+	var nearest_crafter = find_nearest_crafter()  # Local variable, no shadowing
+
 
 	# If holding an item and near a crafter, drop the item into the crafter
 	if pickup_object and nearest_crafter:
 		print("Dropping", pickup_object.name, "into Crafter")
 		remove_child(pickup_object)  # Remove from player
-		nearest_crafter.add_item(pickup_object)  # Give to Crafter
+		nearest_crafter.add_item_to_crafter(pickup_object)  # Give to Crafter
+		print("Item added to crafter.")
 		pickup_object = null  # Player is now empty
 		return
 
@@ -183,12 +187,13 @@ func is_near_healstation() -> bool:
 		print("Healstation not found!")
 		return false
 
-func find_nearest_crafter():
+# Local function to find the nearest crafter
+func find_nearest_crafter() -> Node:
 	if not is_inside_tree():
 		print("find_nearest_crafter() called too early!")
 		return null  # Prevent the error
 
-	var nearest_crafter = null
+	var nearest_crafter = null  # Local variable
 	var min_distance = 128  # Adjust range if needed
 
 	for crafter in get_tree().get_nodes_in_group("crafters"):
