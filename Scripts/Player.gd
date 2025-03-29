@@ -6,11 +6,10 @@ var pickup_object = null
 
 @onready var healstation = get_node("../HealStation")
 @onready var world = get_parent()
-@onready var anim = get_node("AnimatedSprite2D")
+@onready var anim = get_node("./Joy")
 var last_direction = null
+var nearest_crafter = find_nearest_crafter()
 
-func _ready():
-	print("Tables in group:", get_tree().get_nodes_in_group("tables"))
 
 func _physics_process(_delta):
 	var direction = Vector2.ZERO
@@ -58,18 +57,28 @@ func _physics_process(_delta):
 	var current_speed = SPEED if not Input.is_action_pressed("ui_shift") else RUN_SPEED
 	velocity = direction.normalized() * current_speed
 	move_and_slide()
-
 func interact(item = null):
 	if item == null:
 		item = find_nearest_pickup_item()
 
+	var nearest_crafter = find_nearest_crafter()
+
+	# If holding an item and near a crafter, drop the item into the crafter
+	if pickup_object and nearest_crafter:
+		print("Dropping", pickup_object.name, "into Crafter")
+		remove_child(pickup_object)  # Remove from player
+		nearest_crafter.add_item(pickup_object)  # Give to Crafter
+		pickup_object = null  # Player is now empty
+		return
+
+	# Picking up an item
 	if item and pickup_object == null and global_position.distance_to(item.global_position) < 160:
 		print("Picked up Item:", item.name)
 		if item.get_parent():
 			item.get_parent().remove_child(item)
 		pickup_object = item
 		add_child(pickup_object)
-		pickup_object.position = Vector2(2, 30)
+		pickup_object.position = Vector2(0, -25)
 		pickup_object.scale = Vector2(1, 1)
 		move_child(pickup_object, 3)
 		pickup_object.visible = true
@@ -78,6 +87,7 @@ func interact(item = null):
 	var nearest_table = find_nearest_table()
 	print("Nearest table:", nearest_table)
 
+	# Picking up from a table
 	if pickup_object == null and nearest_table:
 		var last_item = nearest_table.remove_item_from_table()
 		if last_item:
@@ -86,12 +96,13 @@ func interact(item = null):
 				last_item.get_parent().remove_child(last_item)
 			pickup_object = last_item
 			add_child(pickup_object)
-			pickup_object.position = Vector2(2, 30)
+			pickup_object.position = Vector2(0, -25)
 			pickup_object.scale = Vector2(1, 1)
 			move_child(pickup_object, 3)
 			pickup_object.visible = true
 			return
 
+	# Picking up from Healstation
 	elif pickup_object == null and is_near_healstation():
 		var last_item = healstation.remove_item_from_healstation()
 		if last_item:
@@ -100,12 +111,13 @@ func interact(item = null):
 				last_item.get_parent().remove_child(last_item)
 			pickup_object = last_item
 			add_child(pickup_object)
-			pickup_object.position = Vector2(2, 30)
+			pickup_object.position = Vector2(0, -25)
 			pickup_object.scale = Vector2(1, 1)
 			move_child(pickup_object, 3)
 			pickup_object.visible = true
 			return
 
+	# Dropping an item on a table
 	elif pickup_object != null:
 		if nearest_table:
 			print("Trying to drop item on table:", pickup_object.name)
@@ -170,3 +182,19 @@ func is_near_healstation() -> bool:
 	else:
 		print("Healstation not found!")
 		return false
+
+func find_nearest_crafter():
+	if not is_inside_tree():
+		print("find_nearest_crafter() called too early!")
+		return null  # Prevent the error
+
+	var nearest_crafter = null
+	var min_distance = 128  # Adjust range if needed
+
+	for crafter in get_tree().get_nodes_in_group("crafters"):
+		var distance = global_position.distance_to(crafter.global_position)
+		if distance < min_distance:
+			nearest_crafter = crafter
+			min_distance = distance
+
+	return nearest_crafter

@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://den8gqxcryxdv"]
+[gd_scene load_steps=4 format=3 uid="uid://cafnptu3t81yt"]
 
 [ext_resource type="Script" uid="uid://claq5iss3m6nt" path="res://Scripts/PickUpObject.gd" id="1_6yxvi"]
 [ext_resource type="Texture2D" uid="uid://dd785jx5udjmi" path="res://Assets/berry/chesto.png" id="2_02fgl"]
@@ -7,6 +7,7 @@
 radius = 24.0
 
 [node name="ChestoBerry" type="Node2D"]
+scale = Vector2(2, 2)
 
 [node name="ChestoBerry" type="Area2D" parent="."]
 script = ExtResource("1_6yxvi")
@@ -15,5 +16,5 @@ script = ExtResource("1_6yxvi")
 shape = SubResource("CircleShape2D_ul1hq")
 
 [node name="Sprite2D" type="Sprite2D" parent="ChestoBerry"]
-scale = Vector2(0.05, 0.05)
+scale = Vector2(1.5, 1.5)
 texture = ExtResource("2_02fgl")

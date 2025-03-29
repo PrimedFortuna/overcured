@@ -135,8 +135,7 @@ speed_scale = 0.5
 position = Vector2(-0.555555, 10.4889)
 scale = Vector2(1.1, 1.1)
 sprite_frames = ExtResource("12_124qp")
-animation = &"walk_down_speed"
-autoplay = "idle_down"
+animation = &"walk_up"
 speed_scale = 0.5
 
 [node name="Input" parent="." instance=ExtResource("27_wp4mh")]
@@ -152,6 +151,7 @@ scale = Vector2(1.8, 1.8)
 [node name="Player3" type="CharacterBody2D" parent="."]
 visible = false
 position = Vector2(-832, 416)
+script = ExtResource("2_jwv4s")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player3"]
 position = Vector2(0, 8)
