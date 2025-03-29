@@ -79,16 +79,6 @@ theme_override_fonts/font = ExtResource("3_8um5k")
 theme_override_font_sizes/font_size = 32
 text = "PLAY"
 
-[node name="ExitButton" type="Button" parent="."]
-layout_mode = 0
-offset_left = 792.0
-offset_top = 656.0
-offset_right = 1106.0
-offset_bottom = 744.0
-theme_override_fonts/font = ExtResource("3_8um5k")
-theme_override_font_sizes/font_size = 32
-text = "EXIT"
-
 [node name="SettingsButton" type="Button" parent="."]
 layout_mode = 0
 offset_left = 792.0
@@ -98,3 +88,13 @@ offset_bottom = 627.0
 theme_override_fonts/font = ExtResource("3_8um5k")
 theme_override_font_sizes/font_size = 32
 text = "SETTINGS"
+
+[node name="ExitButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 792.0
+offset_top = 656.0
+offset_right = 1106.0
+offset_bottom = 744.0
+theme_override_fonts/font = ExtResource("3_8um5k")
+theme_override_font_sizes/font_size = 32
+text = "EXIT"
