@@ -7,6 +7,7 @@
 radius = 24.0
 
 [node name="ParalyzeHeal" type="Node2D"]
+scale = Vector2(2, 2)
 
 [node name="ParalyzeHeal" type="Area2D" parent="."]
 script = ExtResource("1_gvh07")
@@ -15,5 +16,5 @@ script = ExtResource("1_gvh07")
 shape = SubResource("CircleShape2D_5wtry")
 
 [node name="Sprite2D" type="Sprite2D" parent="ParalyzeHeal"]
-scale = Vector2(0.05, 0.05)
+scale = Vector2(1.5, 1.5)
 texture = ExtResource("2_s7uhw")

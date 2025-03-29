@@ -131,17 +131,24 @@ func _on_Timer_timeout():
 		get_parent().add_child(crafted_item)
 		print("Crafted:", crafted_item_name)
 
-		# Clear the GridContainer
-		grid_container.remove_child($GridContainer)
+	#	grid_container.remove_child($GridContainer)
 
-		# Reset crafted item name for next use
 		crafted_item_name = ""
 
 func drop_items():
 	print("Dropping items, invalid recipe")
+	
+	# The position where we want to drop the items
+	var drop_position = global_position + Vector2(0, -50)  # Adjust the offset if needed
+	
 	for item in input_items:
 		if item.get_parent():
+			# Set the item position to be the same as the crafted item
+			item.global_position = drop_position
+
+			# Remove the item from the crafter and free it
 			item.get_parent().remove_child(item)
 			item.queue_free()
 
+	# Clear the input items list
 	input_items.clear()

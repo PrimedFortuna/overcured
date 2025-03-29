@@ -7,6 +7,7 @@
 radius = 24.0
 
 [node name="CheriBerry" type="Node2D"]
+scale = Vector2(2, 2)
 
 [node name="CheriBerry" type="Area2D" parent="."]
 script = ExtResource("1_v8eo5")
@@ -15,5 +16,5 @@ script = ExtResource("1_v8eo5")
 shape = SubResource("CircleShape2D_687sx")
 
 [node name="Sprite2D" type="Sprite2D" parent="CheriBerry"]
-scale = Vector2(0.05, 0.05)
+scale = Vector2(1.5, 1.5)
 texture = ExtResource("2_f2n3t")

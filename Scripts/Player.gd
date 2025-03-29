@@ -6,7 +6,7 @@ var pickup_object = null
 
 @onready var healstation = get_node("../HealStation")
 @onready var world = get_parent()
-@onready var anim = get_node("./Joy")
+@onready var anim = get_node("./Brendan")
 var last_direction = null
 
 func _physics_process(_delta):
