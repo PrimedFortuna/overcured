@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c3v6wmyh5sgx0"
-path="res://.godot/imported/oranberry.png-7edd3185716ec610b7114183c6ff62de.ctex"
+uid="uid://sn4rm0n3ifvy"
+path="res://.godot/imported/revival-herb.png-492b200fbbd302211553c837478c2157.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/oranberry.png"
-dest_files=["res://.godot/imported/oranberry.png-7edd3185716ec610b7114183c6ff62de.ctex"]
+source_file="res://Assets/heal/revival-herb.png"
+dest_files=["res://.godot/imported/revival-herb.png-492b200fbbd302211553c837478c2157.ctex"]
 
 [params]
 

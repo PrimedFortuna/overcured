@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dmq2uh0uf80uq"]
+
+[ext_resource type="Script" uid="uid://claq5iss3m6nt" path="res://Scripts/PickUpObject.gd" id="1_v8nvt"]
+[ext_resource type="Texture2D" uid="uid://j8klbayjoxos" path="res://Assets/potion/hyper-potion.png" id="2_1ummt"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2rsbd"]
+radius = 24.0
+
+[node name="HyperPotion" type="Node2D"]
+
+[node name="HyperPotion" type="Area2D" parent="."]
+script = ExtResource("1_v8nvt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HyperPotion"]
+shape = SubResource("CircleShape2D_2rsbd")
+
+[node name="Sprite2D" type="Sprite2D" parent="HyperPotion"]
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_1ummt")

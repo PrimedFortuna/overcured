@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://350vkcrx5cy"]
+
+[ext_resource type="Script" uid="uid://claq5iss3m6nt" path="res://Scripts/PickUpObject.gd" id="1_jq6ub"]
+[ext_resource type="Texture2D" uid="uid://b5472hxacvsl7" path="res://Assets/status/ice-heal.png" id="2_dcknx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g86yj"]
+radius = 24.0
+
+[node name="IceHeal" type="Node2D"]
+
+[node name="IceHeal" type="Area2D" parent="."]
+script = ExtResource("1_jq6ub")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="IceHeal"]
+shape = SubResource("CircleShape2D_g86yj")
+
+[node name="Sprite2D" type="Sprite2D" parent="IceHeal"]
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_dcknx")
