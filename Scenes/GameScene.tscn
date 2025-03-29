@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://db6ji3v1uapgm"]
+[gd_scene load_steps=24 format=3 uid="uid://db6ji3v1uapgm"]
 
 [ext_resource type="Script" uid="uid://bp2xtipdcd5rl" path="res://Scripts/GameScene.gd" id="1_lohlh"]
 [ext_resource type="Texture2D" uid="uid://hq1i1r3pw5q4" path="res://Assets/background.png" id="2_4v654"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cjbqxcu752l23" path="res://Scenes/Objects/Crate.tscn" id="8_leul7"]
 [ext_resource type="SpriteFrames" uid="uid://phhfeex1qlvu" path="res://Scenes/sprite/brendan.tres" id="11_7rq2r"]
 [ext_resource type="SpriteFrames" uid="uid://b4t5ru6jdsnf7" path="res://Scenes/sprite/joy.tres" id="12_124qp"]
+[ext_resource type="PackedScene" uid="uid://bv1g6s7gddv1g" path="res://Scenes/pause_menu.tscn" id="16_qolck"]
 [ext_resource type="PackedScene" uid="uid://bfviolr204khv" path="res://Scenes/Items/Berries/PechaBerry.tscn" id="17_yhlfj"]
 [ext_resource type="PackedScene" uid="uid://yf41jj64pimm" path="res://Scenes/Objects/HealStation.tscn" id="24_4v654"]
 [ext_resource type="Script" uid="uid://dbclnnypil4qw" path="res://Scripts/HealStation.gd" id="25_leul7"]
@@ -129,7 +130,7 @@ limit_smoothed = true
 position = Vector2(-0.555556, 5.55556)
 scale = Vector2(1.41034, 1.28833)
 sprite_frames = ExtResource("11_7rq2r")
-animation = &"walk_up_speed"
+animation = &"idle_down"
 autoplay = "idle_down"
 speed_scale = 0.5
 
@@ -151,3 +152,5 @@ scale = Vector2(1.8, 1.8)
 position = Vector2(672, 128)
 rotation = 1.5708
 scale = Vector2(1.8, 1.8)
+
+[node name="PauseMenu" parent="." instance=ExtResource("16_qolck")]
