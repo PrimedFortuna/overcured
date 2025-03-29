@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://cjomwq0jfhesc" path="res://Assets/crate.png" id="1_365xj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_365xj"]
-size = Vector2(144, 144)
+size = Vector2(128, 136)
 
 [node name="Crate" type="Node2D"]
 
@@ -14,6 +14,7 @@ scale = Vector2(0.4, 0.4)
 texture = ExtResource("1_365xj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_365xj")
 
 [node name="GridContainer" type="GridContainer" parent="."]
