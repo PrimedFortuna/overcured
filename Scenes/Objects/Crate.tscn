@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://cjbqxcu752l23"]
+[gd_scene load_steps=4 format=3 uid="uid://cjbqxcu752l23"]
 
 [ext_resource type="Texture2D" uid="uid://cjomwq0jfhesc" path="res://Assets/crate.png" id="1_365xj"]
+[ext_resource type="Script" uid="uid://ck13dc4ge8cqk" path="res://Scripts/Crate.gd" id="1_i7iub"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_365xj"]
 size = Vector2(128, 136)
 
 [node name="Crate" type="Node2D"]
+script = ExtResource("1_i7iub")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
@@ -20,5 +22,7 @@ shape = SubResource("RectangleShape2D_365xj")
 [node name="SpawnPoint1" type="StaticBody2D" parent="."]
 position = Vector2(-32, -24)
 
-[node name="SpawmPoint2" type="StaticBody2D" parent="."]
+[node name="SpawnPoint2" type="StaticBody2D" parent="."]
 position = Vector2(32, -32)
+
+[node name="Timer" type="Timer" parent="."]

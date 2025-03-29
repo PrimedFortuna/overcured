@@ -127,7 +127,6 @@ func _on_Timer_timeout():
 		get_parent().add_child(crafted_item)
 		print("Crafted:", crafted_item_name)
 
-	#	grid_container.remove_child($GridContainer)
 
 		crafted_item_name = ""
 
@@ -144,18 +143,15 @@ func drop_items():
 	for i in range(input_items.size()):
 		var item = input_items[i]
 
-		# Create a duplicate of the item before reparenting
 		var new_item = item.duplicate()
 		new_item.scale = Vector2(2, 2)  
 		new_item.visible = true
 
-		# Remove original from parent and free it
 		item.get_parent().remove_child(item)
-		item.queue_free()  # Ensure the original is deleted to remove old GridContainer scaling
+		item.queue_free() 
 
-		# Add the duplicated item to the game scene
 		game_scene.add_child(new_item)
-		new_item.global_position = drop_position + Vector2(10 * i, 0)  # Slight offset to avoid overlap
+		new_item.global_position = drop_position + Vector2(10 * i, 0)
 		new_item.queue_redraw()
 
 	input_items.clear()
