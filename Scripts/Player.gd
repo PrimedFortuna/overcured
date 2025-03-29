@@ -1,12 +1,12 @@
 extends CharacterBody2D
 
-const SPEED = 180      
-const RUN_SPEED = 300  
+const SPEED = 260 
+const RUN_SPEED = 380  
 var pickup_object = null  
 
 @onready var table = get_node("../Table")
 @onready var healstation = get_node("../HealStation")
-@onready var world = get_parent()  # Reference to the world (ensures proper reparenting)
+@onready var world = get_parent()
 
 func _ready():
 	print("Player script is running!")
@@ -35,15 +35,17 @@ func interact(item = null):
 		item = find_nearest_pickup_item()
 
 	# Picking up an item from the ground
-	if item and pickup_object == null and global_position.distance_to(item.global_position) < 50: 
+	if item and pickup_object == null and global_position.distance_to(item.global_position) < 90: 
 		print("Picked up Item:", item.name)
 		if item.get_parent():  # Ensure it has a parent before reparenting
 			item.get_parent().remove_child(item)
 		pickup_object = item
 		add_child(pickup_object)  # Instead of reparent(), use add_child()
 		pickup_object.position = Vector2(2, 30)
+		pickup_object.scale = Vector2(1, 1)
 		move_child(pickup_object, 3)
-		pickup_object.visible = true  
+		pickup_object.visible = true
+		return  # Prevent dropping immediately after pickup
 
 	elif pickup_object == null and is_near_table():
 		var last_item = table.remove_item_from_table() 
@@ -54,8 +56,10 @@ func interact(item = null):
 			pickup_object = last_item
 			add_child(pickup_object)
 			pickup_object.position = Vector2(2, 30)
+			pickup_object.scale = Vector2(1, 1)
 			move_child(pickup_object, 3)
-			pickup_object.visible = true  
+			pickup_object.visible = true
+			return  # Prevent dropping immediately after pickup
 			
 	elif pickup_object == null and is_near_healstation():
 		var last_item = healstation.remove_item_from_healstation() 
@@ -66,14 +70,18 @@ func interact(item = null):
 			pickup_object = last_item
 			add_child(pickup_object)
 			pickup_object.position = Vector2(2, 30)
+			pickup_object.scale = Vector2(1, 1)
 			move_child(pickup_object, 3)
-			pickup_object.visible = true  
+			pickup_object.visible = true
+			return  # Prevent dropping immediately after pickup
 
+	# Dropping logic
 	elif pickup_object != null:
 		if is_near_table():
 			print("Dropped on table:", pickup_object.name)
 			remove_child(pickup_object)
 			table.add_item_to_table(pickup_object)
+			pickup_object.scale = Vector2(2, 2)
 			pickup_object = null
 		elif is_near_healstation():
 			# Check if the item is a Pokeball before dropping it on the heal station
@@ -81,18 +89,21 @@ func interact(item = null):
 				print("Dropped on healstation:", pickup_object.name)
 				remove_child(pickup_object)
 				healstation.add_item_to_healstation(pickup_object)
+				pickup_object.scale = Vector2(1.5, 1.5) 
 				pickup_object = null
 			else:
 				print("Can't drop this item on the healstation! Only Pokeballs can be dropped here.")
 		else:
 			print("Dropped on ground:", pickup_object.name)
 			if pickup_object.get_parent():  
-				pickup_object.get_parent().remove_child(pickup_object)  # Remove from current parent
-			world.add_child(pickup_object)  # Add it to the world
+				pickup_object.get_parent().remove_child(pickup_object) 
+			world.add_child(pickup_object)
 			world.move_child(pickup_object, 1)
 			pickup_object.global_position = global_position + Vector2(0, 20)  
-			pickup_object.visible = true  
+			pickup_object.visible = true
+			pickup_object.scale = Vector2(2, 2)
 			pickup_object = null
+
 
 func find_nearest_pickup_item() -> Node:
 	var nearest_item = null

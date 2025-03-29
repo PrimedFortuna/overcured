@@ -1,7 +1,7 @@
 [gd_scene load_steps=32 format=3 uid="uid://db6ji3v1uapgm"]
 
-[ext_resource type="Texture2D" uid="uid://b5wkawcgojnos" path="res://Assets/Floor.png" id="1_3mbwn"]
 [ext_resource type="Script" uid="uid://bp2xtipdcd5rl" path="res://Scripts/GameScene.gd" id="1_lohlh"]
+[ext_resource type="Texture2D" uid="uid://hq1i1r3pw5q4" path="res://Assets/background.png" id="2_4v654"]
 [ext_resource type="Script" uid="uid://cifuuoa1l86f7" path="res://Scripts/Player.gd" id="2_jwv4s"]
 [ext_resource type="Texture2D" uid="uid://3pki2dc8xvn2" path="res://Assets/placeholdersprite.png" id="3_lohlh"]
 [ext_resource type="PackedScene" uid="uid://ctg0dh4n60hqv" path="res://Scenes/Items/OranBerry.tscn" id="4_hgvmy"]
@@ -24,25 +24,25 @@
 [ext_resource type="Texture2D" uid="uid://brjrlvmvxyrgt" path="res://Assets/Joy_Sprites/joy_up_left.png" id="21_6gwdq"]
 [ext_resource type="Texture2D" uid="uid://dejgib4kdkm8s" path="res://Assets/Joy_Sprites/joy_up_right.png" id="22_rsfko"]
 [ext_resource type="PackedScene" uid="uid://yf41jj64pimm" path="res://Scenes/Objects/HealStation.tscn" id="24_4v654"]
-[ext_resource type="Script" uid="uid://dbclnnypil4qw" path="res://Scenes/Objects/HealStation.gd" id="25_leul7"]
+[ext_resource type="Script" uid="uid://dbclnnypil4qw" path="res://Scripts/HealStation.gd" id="25_leul7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b5kf5"]
-size = Vector2(64, 80)
+size = Vector2(48.8889, 71.1111)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_haeiw"]
 normal = Vector2(0, 1)
-distance = -384.0
+distance = -504.0
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_b5kf5"]
 normal = Vector2(-1, 0)
-distance = -392.0
+distance = -624.0
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_hvuor"]
-distance = -384.0
+distance = -480.0
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_i2arf"]
 normal = Vector2(1, 0)
-distance = -384.0
+distance = -888.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_cr6v8"]
 animations = [{
@@ -219,8 +219,9 @@ animations = [{
 script = ExtResource("1_lohlh")
 
 [node name="Floor" type="Sprite2D" parent="."]
-position = Vector2(0, 1)
-texture = ExtResource("1_3mbwn")
+position = Vector2(-8.00007, -12)
+scale = Vector2(0.916667, 0.925926)
+texture = ExtResource("2_4v654")
 
 [node name="PickUpObject" parent="." instance=ExtResource("4_jwv4s")]
 position = Vector2(169, -105)
@@ -232,18 +233,22 @@ position = Vector2(-221, -115)
 position = Vector2(152, 0)
 
 [node name="Table" parent="." instance=ExtResource("6_kilg5")]
-position = Vector2(136, -296)
+position = Vector2(-512, -192)
+
+[node name="Table2" parent="." instance=ExtResource("6_kilg5")]
+position = Vector2(-512, 192)
 
 [node name="HealStation" parent="." instance=ExtResource("24_4v654")]
-position = Vector2(-184, -288)
+position = Vector2(0, -408)
 script = ExtResource("25_leul7")
 
 [node name="Player" type="CharacterBody2D" parent="."]
 position = Vector2(-7, -10)
+scale = Vector2(1.8, 1.8)
 script = ExtResource("2_jwv4s")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-position = Vector2(0, 8)
+position = Vector2(1.66667, 10)
 shape = SubResource("RectangleShape2D_b5kf5")
 
 [node name="Sprite2D" type="Sprite2D" parent="Player"]
@@ -270,7 +275,7 @@ shape = SubResource("WorldBoundaryShape2D_i2arf")
 
 [node name="Player2" type="CharacterBody2D" parent="."]
 visible = false
-position = Vector2(-7, 116)
+position = Vector2(-832, 416)
 script = ExtResource("2_jwv4s")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player2"]

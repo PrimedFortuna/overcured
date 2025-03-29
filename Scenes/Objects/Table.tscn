@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://cfs64jt285hxk" path="res://Scripts/Table.gd" id="2_ab3gw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ab3gw"]
-size = Vector2(238, 69)
+size = Vector2(392, 152)
 
 [node name="Table" type="Node2D"]
 script = ExtResource("2_ab3gw")
@@ -12,20 +12,22 @@ script = ExtResource("2_ab3gw")
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
-scale = Vector2(0.398856, 0.24)
+scale = Vector2(0.9, 0.9)
 texture = ExtResource("1_5ervl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(0, -34.5)
+position = Vector2(4, -44)
 shape = SubResource("RectangleShape2D_ab3gw")
 
 [node name="GridContainer" type="GridContainer" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -72.0
-offset_top = -40.0
-offset_right = 72.0
+offset_left = -96.0
+offset_top = -64.0
+offset_right = 48.0
+offset_bottom = -24.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1.4, 1.48)
 columns = 3
