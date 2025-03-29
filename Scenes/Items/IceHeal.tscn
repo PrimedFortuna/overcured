@@ -7,6 +7,7 @@
 radius = 24.0
 
 [node name="IceHeal" type="Node2D"]
+scale = Vector2(2, 2)
 
 [node name="IceHeal" type="Area2D" parent="."]
 script = ExtResource("1_jq6ub")
@@ -15,5 +16,5 @@ script = ExtResource("1_jq6ub")
 shape = SubResource("CircleShape2D_g86yj")
 
 [node name="Sprite2D" type="Sprite2D" parent="IceHeal"]
-scale = Vector2(0.05, 0.05)
+scale = Vector2(1.5, 1.5)
 texture = ExtResource("2_dcknx")

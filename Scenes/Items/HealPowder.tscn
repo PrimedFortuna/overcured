@@ -7,6 +7,7 @@
 radius = 24.0
 
 [node name="HealPowder" type="Node2D"]
+scale = Vector2(2, 2)
 
 [node name="HealPowder" type="Area2D" parent="."]
 script = ExtResource("1_l3p0i")
@@ -15,5 +16,5 @@ script = ExtResource("1_l3p0i")
 shape = SubResource("CircleShape2D_8dkap")
 
 [node name="Sprite2D" type="Sprite2D" parent="HealPowder"]
-scale = Vector2(0.05, 0.05)
+scale = Vector2(1.5, 1.5)
 texture = ExtResource("2_assyl")
