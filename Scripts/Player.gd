@@ -81,7 +81,7 @@ func interact(item = null):
 			print("Dropped on table:", pickup_object.name)
 			remove_child(pickup_object)
 			table.add_item_to_table(pickup_object)
-			pickup_object.scale = Vector2(2, 2)
+			pickup_object.scale = Vector2(1.2, 1.2)
 			pickup_object = null
 		elif is_near_healstation():
 			# Check if the item is a Pokeball before dropping it on the heal station
