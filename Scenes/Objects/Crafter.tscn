@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://clt2d71t25xht"]
+
+[ext_resource type="Texture2D" uid="uid://b3gf8gfou8jel" path="res://Assets/Crafter.png" id="1_onaxf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kjfg2"]
+size = Vector2(32, 32)
+
+[node name="Crafter" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+texture = ExtResource("1_onaxf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_kjfg2")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+offset_left = -8.0
+offset_top = -16.0
+offset_right = 6.0
+offset_bottom = 16.0
+scale = Vector2(1.12, 1)

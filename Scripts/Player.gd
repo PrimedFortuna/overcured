@@ -31,7 +31,7 @@ func interact(item = null):
 	if item == null:
 		item = find_nearest_pickup_item()
 
-	if item and pickup_object == null and global_position.distance_to(item.global_position) < 200:
+	if item and pickup_object == null and global_position.distance_to(item.global_position) < 160:
 		print("Picked up Item:", item.name)
 		if item.get_parent():
 			item.get_parent().remove_child(item)
@@ -106,7 +106,7 @@ func interact(item = null):
 
 func find_nearest_pickup_item() -> Node:
 	var nearest_item = null
-	var min_distance = 200
+	var min_distance = 120
 
 	for item in get_tree().get_nodes_in_group("pickups"):
 		if item and item is Node2D:
@@ -119,7 +119,7 @@ func find_nearest_pickup_item() -> Node:
 
 func find_nearest_table() -> Node:
 	var nearest_table = null
-	var min_distance = 200
+	var min_distance = 128
 	var tables = get_tree().get_nodes_in_group("tables")
 
 
@@ -137,7 +137,7 @@ func find_nearest_table() -> Node:
 
 func is_near_healstation() -> bool:
 	if healstation:
-		return global_position.distance_to(healstation.global_position) < 128
+		return global_position.distance_to(healstation.global_position) < 160
 	else:
 		print("Healstation not found!")
 		return false
