@@ -222,12 +222,8 @@ func _input(event):
 						"Awakening":
 							nearest_pokemon.remove_status("Asleep")  # Cure Sleep
 						"FullHeal":
-							# Remove all status effects and heal Pokémon
 							for effect in nearest_pokemon.status:
 								nearest_pokemon.remove_status(effect)
-							nearest_pokemon.heal(nearest_pokemon.max_health)
-						_:
-							print("Heal effect not recognized")
 					pickup_object.queue_free()  # Remove heal item from inventory after use
 
 

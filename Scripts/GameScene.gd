@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var player = $Player
+@onready var pause = $CanvasLayer
 
 func _input(event):
 	if event.is_action_pressed("ui_select"):
