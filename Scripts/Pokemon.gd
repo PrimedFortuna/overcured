@@ -31,6 +31,7 @@ func heal(value: int):
 		if health > max_health:
 			health = max_health
 		print("Healed to: ", health, "out of", max_health)
+	check_if_completed()
 
 
 func check_if_completed():
