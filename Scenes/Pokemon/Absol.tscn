@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://dyyqqcvwghyrp"]
+
+[ext_resource type="Texture2D" uid="uid://cssd2aaraspnm" path="res://Assets/Sprites/Pokemon_Sprites/absol_front.png" id="1_bommw"]
+[ext_resource type="Texture2D" uid="uid://cec7ollon777b" path="res://Assets/Sprites/Pokemon_Sprites/absol_left.png" id="2_yum17"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xnxab"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_bommw")
+}],
+"loop": true,
+"name": &"down",
+"speed": 1.5
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_yum17")
+}],
+"loop": true,
+"name": &"left",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o3o7y"]
+radius = 33.6155
+
+[node name="Absol" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2.5, 2.5)
+sprite_frames = SubResource("SpriteFrames_xnxab")
+animation = &"left"
+autoplay = "down"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-3, 4)
+shape = SubResource("CircleShape2D_o3o7y")

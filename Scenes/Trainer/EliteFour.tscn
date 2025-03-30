@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://qhkhbh8bm3ad"]
+
+[ext_resource type="SpriteFrames" uid="uid://bi0idbbcvumal" path="res://Scenes/sprite/bugcatcher.tres" id="1_yowf3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_it6nj"]
+size = Vector2(53.3333, 66.6667)
+
+[node name="EliteFour" type="Node2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 8)
+shape = SubResource("RectangleShape2D_it6nj")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(2.38419e-07, 7)
+scale = Vector2(1.5, 1.5)
+sprite_frames = ExtResource("1_yowf3")
+animation = &"idle_down"
+speed_scale = 0.5

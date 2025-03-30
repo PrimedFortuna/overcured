@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bhvfdni4oakug"]
+[gd_scene load_steps=6 format=3 uid="uid://bhvfdni4oakug"]
 
 [ext_resource type="Texture2D" uid="uid://dvmqgvf5y1jkq" path="res://Assets/menubackground.png" id="1_bxkgl"]
 [ext_resource type="Script" uid="uid://c71255uxn4fmx" path="res://Scenes/Skin.gd" id="3_i3ogb"]
+[ext_resource type="FontFile" uid="uid://b5igmqdsdnp5c" path="res://Assets/PixelatedEleganceRegular-ovyAA.ttf" id="4_i3ogb"]
 [ext_resource type="Texture2D" uid="uid://bhgxi7igiihnh" path="res://Assets/Sprites/Joy_Sprites/joy_front_still_1.png" id="4_njv2a"]
 
 [sub_resource type="GDScript" id="GDScript_eq3af"]
@@ -56,6 +57,20 @@ offset_right = 888.0
 offset_bottom = 640.0
 theme_override_font_sizes/font_size = 40
 text = "OK"
+
+[node name="BackButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 72.0
+offset_top = -151.0
+offset_right = 386.0
+offset_bottom = -60.0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("4_i3ogb")
+theme_override_font_sizes/font_size = 32
+text = "Go Back"
 
 [connection signal="pressed" from="Skin/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Skin/Button" to="Skin" method="_on_button_pressed"]
