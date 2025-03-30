@@ -158,7 +158,7 @@ func interact(item = null):
 			pickup_object.scale = Vector2(2, 2)
 			pickup_object = null
 
-# Check for Pokéball usage and toggle Pokémon following
+
 func _input(event):
 	if event.is_action_pressed("ui_use"):
 		print("Q pressed")
@@ -172,11 +172,15 @@ func _input(event):
 					is_using_pokeball = false
 					pokemon_following = null
 					nearest_pokemon.visible = true
+					# Attach the Pokémon to the Pokéball's position when released
+					nearest_pokemon.position = pickup_object.position  # Set Pokémon's position to Pokéball's
 				else:
 					print("Pokémon start following the Pokéball")
 					is_using_pokeball = true
 					pokemon_following = nearest_pokemon
 					nearest_pokemon.visible = false
+					# Set the Pokémon's position to the Pokéball's position
+					nearest_pokemon.position = pickup_object.position
 
 		elif pickup_object and pickup_object.is_in_group("potion"):
 			print("Using Potion?")
