@@ -1,18 +1,22 @@
-[gd_scene load_steps=6 format=3 uid="uid://djuquj6c3t2cv"]
+[gd_scene load_steps=7 format=3 uid="uid://djuquj6c3t2cv"]
 
 [ext_resource type="Script" uid="uid://bsyd2yyb7h1tq" path="res://Scripts/Pokemon.gd" id="1_n3bbu"]
 [ext_resource type="Texture2D" uid="uid://cikgxbch7t2hg" path="res://Assets/Sprites/pikachu_sprite/pikachu_front_1.png" id="1_w7wcm"]
 [ext_resource type="Texture2D" uid="uid://cfsfhk3n05yq1" path="res://Assets/Sprites/pikachu_sprite/pikachu_left_1.png" id="2_n3bbu"]
+[ext_resource type="Texture2D" uid="uid://b2k24jrxcwwr0" path="res://Assets/Sprites/pikachu_sprite/pikachu_front_2.png" id="3_2dygt"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2dygt"]
 animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("1_w7wcm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_2dygt")
 }],
 "loop": true,
 "name": &"down",
-"speed": 5.0
+"speed": 1.5
 }, {
 "frames": [{
 "duration": 1.0,
@@ -34,6 +38,8 @@ script = ExtResource("1_n3bbu")
 scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_2dygt")
 animation = &"down"
+autoplay = "down"
+frame_progress = 0.71731
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_uj64t")

@@ -150,3 +150,4 @@ position = Vector2(-366, 7)
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("16_qolck")]
+visible = false
