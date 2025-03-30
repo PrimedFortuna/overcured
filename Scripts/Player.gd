@@ -13,35 +13,31 @@ func _physics_process(_delta):
 	var direction = Vector2.ZERO
 
 	# Handle movement inputs and play the correct animation
+	var current_anim = ""
+	
 	if Input.is_action_pressed("ui_right"):
 		direction.x += 1
 		last_direction = "right"
-		if Input.is_action_pressed("ui_shift"):
-			anim.play("walk_right_speed")
-		else:
-			anim.play("walk_right")
+		current_anim = "walk_right_speed" if Input.is_action_pressed("ui_shift") else "walk_right"
+	
 	if Input.is_action_pressed("ui_left"):
 		direction.x -= 1
 		last_direction = "left"
-		if Input.is_action_pressed("ui_shift"):
-			anim.play("walk_left_speed")
-		else:
-			anim.play("walk_left")
-			
+		current_anim = "walk_left_speed" if Input.is_action_pressed("ui_shift") else "walk_left"
+	
 	if Input.is_action_pressed("ui_down"):
 		direction.y += 1
 		last_direction = "down"
-		if Input.is_action_pressed("ui_shift"):
-			anim.play("walk_down_speed")
-		else:
-			anim.play("walk_down")
+		current_anim = "walk_down_speed" if Input.is_action_pressed("ui_shift") else "walk_down"
+	
 	if Input.is_action_pressed("ui_up"):
 		direction.y -= 1
 		last_direction = "up"
-		if Input.is_action_pressed("ui_shift"):
-			anim.play("walk_up_speed")
-		else:
-			anim.play("walk_up")
+		current_anim = "walk_up_speed" if Input.is_action_pressed("ui_shift") else "walk_up"
+
+	# Handle diagonal movement by keeping the last single-direction animation
+	if direction.length() > 0:
+		anim.play(current_anim)
 
 	# Handle idle animations if no movement input is detected
 	if direction == Vector2.ZERO:
@@ -53,6 +49,7 @@ func _physics_process(_delta):
 			anim.play("idle_left")
 		elif last_direction == "right":
 			anim.play("idle_right")
+			
 
 	# Update velocity for movement
 	var current_speed = SPEED if not Input.is_action_pressed("ui_shift") else RUN_SPEED
