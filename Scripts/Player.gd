@@ -172,26 +172,34 @@ func interact(item = null):
 func _input(event):
 	if event.is_action_pressed("ui_use"):
 		print("Q pressed")
+
+		# Capturing/Releasing Pokémon
 		if pickup_object and pickup_object.is_in_group("pokeballs"):
 			print("Capture?")
 			var nearest_pokemon = find_nearest_pokemon()
+			
 			if nearest_pokemon:
 				print("Capturing?")
+				
 				if is_using_pokeball:
+					# Release the Pokémon at the PLAYER'S position
 					print("Pokémon stop following the Pokéball")
 					is_using_pokeball = false
-					pokemon_following = null
 					nearest_pokemon.visible = true
-					# Attach the Pokémon to the Pokéball's position when released
-					nearest_pokemon.position = pickup_object.position  # Set Pokémon's position to Pokéball's
+					nearest_pokemon.position = global_position  # Drop Pokémon at the player's location
+					nearest_pokemon.get_parent().remove_child(nearest_pokemon)  # Detach from Pokéball
+					get_tree().current_scene.add_child(nearest_pokemon)  # Reattach to world
+					get_tree().current_scene.move_child(nearest_pokemon, 4)
+					pokemon_following = null
 				else:
+					# Capture the Pokémon
 					print("Pokémon start following the Pokéball")
 					is_using_pokeball = true
 					pokemon_following = nearest_pokemon
 					nearest_pokemon.visible = false
-					# Set the Pokémon's position to the Pokéball's position
-					nearest_pokemon.position = pickup_object.position
+					pickup_object.add_child(nearest_pokemon)  # Attach Pokémon to the Pokéball
 
+		# Using Potions
 		elif pickup_object and pickup_object.is_in_group("potion"):
 			print("Using Potion?")
 			var nearest_pokemon = find_nearest_pokemon()
@@ -199,17 +207,16 @@ func _input(event):
 				print("Using Potion on Pokémon?")
 				match pickup_object.name:
 					"Potion":
-						nearest_pokemon.heal(20)  # Heal 20 HP with a normal potion
+						nearest_pokemon.heal(20)
 					"SuperPotion":
-						nearest_pokemon.heal(50)  # Heal 50 HP with a super potion
+						nearest_pokemon.heal(50)
 					"HyperPotion":
-						nearest_pokemon.heal(100)  # Heal 100 HP with a hyper potion
+						nearest_pokemon.heal(100)
 					"MaxPotion":
-						nearest_pokemon.heal(nearest_pokemon.max_health)  # Heal fully with a max potion
+						nearest_pokemon.heal(nearest_pokemon.max_health)
+				pickup_object.queue_free()
 
-				pickup_object.queue_free()  # Remove potion from inventory after use
-
-		# Checking for heals
+		# Using Heals
 		elif pickup_object and pickup_object.is_in_group("heals"):
 			print("Using Heal?")
 			var nearest_pokemon = find_nearest_pokemon()
@@ -217,19 +224,19 @@ func _input(event):
 				print("Using Heal on Pokémon?")
 				match pickup_object.name:
 					"Antidote":
-						nearest_pokemon.remove_status("Poisoned")  # Cure Poison
+						nearest_pokemon.remove_status("Poisoned")
 					"BurnHeal":
-						nearest_pokemon.remove_status("Burned")  # Cure Burn
+						nearest_pokemon.remove_status("Burned")
 					"IceHeal":
-						nearest_pokemon.remove_status("Frozen")  # Cure Freeze
+						nearest_pokemon.remove_status("Frozen")
 					"ParalyzeHeal":
-						nearest_pokemon.remove_status("Paralyzed")  # Cure Paralysis
+						nearest_pokemon.remove_status("Paralyzed")
 					"Awakening":
-						nearest_pokemon.remove_status("Asleep")  # Cure Sleep
+						nearest_pokemon.remove_status("Asleep")
 					"FullHeal":
 						for effect in nearest_pokemon.status:
 							nearest_pokemon.remove_status(effect)
-				pickup_object.queue_free()  # Remove heal item from inventory after use
+				pickup_object.queue_free()
 
 
 # Find the nearest Pokémon
