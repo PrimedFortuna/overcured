@@ -10,6 +10,7 @@ var possible_status_effects: Array = ["Poisoned", "Burned", "Paralyzed", "Asleep
 # Add references to the Label nodes in the scene
 @onready var hp_label = $HPLabel
 @onready var status_label = $StatusLabel
+@onready var complete_label = $CompletedLabel
 
 func _ready():
 	add_to_group("pokemon")
@@ -31,6 +32,12 @@ func update_ui():
 		status_text = "Status: Clear"
 	
 	status_label.text = status_text
+	
+	if completed == true:
+		complete_label.text = "Completed!"
+		complete_label.visible=true
+	else:
+		complete_label.visible=false
 
 func add_status(status_effect: String):
 	status.append(status_effect)
@@ -57,6 +64,7 @@ func check_if_completed():
 	if health == max_health and status.size() == 0:
 		completed = true
 		print("Pokemon is completed!")
+		update_ui()
 	else:
 		completed = false
 		print("Pokemon is not completed.")
