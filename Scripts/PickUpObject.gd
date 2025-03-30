@@ -14,76 +14,10 @@ func _ready():
 	if "Berry" in name:
 		add_to_group("berry")
 		
-	if "OranBerry" in name:
+# Add potions to the "potion" group
+	if "Potion" in name or "Revive" in name:
 		add_to_group("potion")
-		
-	if "Potion" in name:
-		add_to_group("superPotion")
-		
-	if "EnergyPowder" in name:
-		add_to_group("superPotion")
-		
-	if "Potion" in name:
-		add_to_group("hyperPotion")
-		
-	if "EnergyRoot" in name:
-		add_to_group("hyperPotion")
-		
-	if "HyperPotion" in name:
-		add_to_group("maxPotion")
-		
-	if "OranBerry" in name:
-		add_to_group("antidote")
-	
-	if "PechaBerry" in name:
-		add_to_group("antidote")
-		
-	if "OranBerry" in name:
-		add_to_group("awakening")
-		
-	if "ChestoBerry" in name:
-		add_to_group("awakening")
-		
-	if "OranBerry" in name:
-		add_to_group("burnHeal")
-		
-	if "RawstBerry" in name:
-		add_to_group("burnHeal")
-		
-	if "OranBerry" in name:
-		add_to_group("iceHeal")
-		
-	if "AspearBerry" in name:
-		add_to_group("iceHeal")
-		
-	if "OranBerry" in name:
-		add_to_group("paralyzeHeal")
 
-	if "CheriBerry" in name:
-		add_to_group("paralyzeHeal")
-		
-	if "HyperPotion" in name:
-		add_to_group("fullHeal")
-		
-	if "HealPowder" in name:
-		add_to_group("fullHeal")
-
-	if "MaxPotion" in name:
-		add_to_group("fullRestore")		
-		
-	if "HealPowder" in name:
-		add_to_group("fullRestore")
-		
-	if "MaxPotion" in name:
-		add_to_group("Revive")	
-		
-	if "RevivalHerb" in name:
-		add_to_group("Revive")
-		
-	if "Revive" in name:
-		add_to_group("Maxrevive")	
-		
-	if "SacredAsh" in name:
-		add_to_group("Maxrevive")			
-
-		
+# Add status effect curing items to the "heals" group
+	if "Antidote" in name or "Awakening" in name or "FullHeal" in name or "FullRestore" in name or "HealPowder" in name or "IceHeal" in name or "ParalyzeHeal" in name:
+		add_to_group("heals")
