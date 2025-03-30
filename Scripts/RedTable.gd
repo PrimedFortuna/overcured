@@ -2,11 +2,13 @@ extends Node2D
 
 var max_items: int = 6  
 var pickup_pokemon: Array = []  # Renaming to pickup_pokemon to reflect that we're dealing with Pokémon now
+var completed_count: int = 0 
 
 @onready var grid_container: GridContainer = $GridContainer  
 
 func _ready():
 	add_to_group("tables")
+	$CompletedLabel.visible = false
 
 # Add a Pokémon to the table
 func add_pokemon_to_table(pokemon: Node2D):  # Make sure pokemon is a Node2D (or extend appropriately)
@@ -67,12 +69,13 @@ func update_pokemon_positions():
 			start_y + row * (item_size.y + padding)
 		)
 
-# New function to check if the table name is "Output" and Pokémon is completed, then delete it
 func check_pokemon_and_delete():
-	if name == "Output":  # Check if the table name is "Output"
+	if name == "Output":
 		for pokemon in pickup_pokemon:
 			if pokemon.has_method("check_if_completed") and pokemon.check_if_completed():  # Check if the Pokémon is completed
 				print("Pokémon completed and returned:", pokemon.name)
+				completed_count += 1  # Increment the counter for completed Pokémon
+				$CompletedLabel.text = "Pokémons delivered: %d" % completed_count  # Update label text with the counter
 				pokemon.queue_free()  # Remove the Pokémon from the scene (delete it)
 				pickup_pokemon.erase(pokemon)  # Remove it from the list
 				update_pokemon_positions()  # Update the grid layout after deletion
