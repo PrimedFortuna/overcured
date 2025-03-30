@@ -1,0 +1,106 @@
+[gd_scene load_steps=13 format=3 uid="uid://d1kdw3tj4811q"]
+
+[ext_resource type="Texture2D" uid="uid://sh8tfbvhcg1h" path="res://Assets/Sprites/Pokemon_Sprites/garchomp.png" id="1_bny6t"]
+[ext_resource type="FontFile" uid="uid://b5igmqdsdnp5c" path="res://Assets/PixelatedEleganceRegular-ovyAA.ttf" id="2_ep1ci"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_velpp"]
+atlas = ExtResource("1_bny6t")
+region = Rect2(0, 62, 32, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x7mv8"]
+atlas = ExtResource("1_bny6t")
+region = Rect2(0, 93, 32, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_710wn"]
+atlas = ExtResource("1_bny6t")
+region = Rect2(32, 0, 32, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gqh6i"]
+atlas = ExtResource("1_bny6t")
+region = Rect2(32, 31, 32, 31)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v4flw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_velpp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x7mv8")
+}],
+"loop": true,
+"name": &"down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_710wn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gqh6i")
+}],
+"loop": true,
+"name": &"left",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7e623"]
+radius = 19.0263
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k8e5a"]
+bg_color = Color(0, 0, 0, 0.494118)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ixm6a"]
+font = ExtResource("2_ep1ci")
+font_size = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o7i7f"]
+bg_color = Color(0, 0, 0, 0.494118)
+
+[sub_resource type="LabelSettings" id="LabelSettings_wesoo"]
+font = ExtResource("2_ep1ci")
+font_size = 20
+
+[node name="Garchomp" type="Node2D"]
+position = Vector2(7, 2)
+scale = Vector2(2.5, 2.5)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1.90735e-06, 2.4)
+sprite_frames = SubResource("SpriteFrames_v4flw")
+animation = &"left"
+frame_progress = 0.767336
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, 2.4)
+shape = SubResource("CircleShape2D_7e623")
+
+[node name="HPLabel" type="Label" parent="."]
+offset_left = -20.0
+offset_top = -48.0
+offset_right = 60.0
+offset_bottom = -25.0
+scale = Vector2(0.5, 0.5)
+theme_override_styles/normal = SubResource("StyleBoxFlat_k8e5a")
+text = "NaN"
+label_settings = SubResource("LabelSettings_ixm6a")
+
+[node name="StatusLabel" type="Label" parent="."]
+offset_left = -20.0
+offset_top = -36.0
+offset_right = 60.0
+offset_bottom = -13.0
+scale = Vector2(0.5, 0.5)
+theme_override_styles/normal = SubResource("StyleBoxFlat_o7i7f")
+text = "NaN"
+label_settings = SubResource("LabelSettings_wesoo")
+
+[node name="CompletedLabel" type="Label" parent="."]
+offset_left = -20.0
+offset_top = -60.0
+offset_right = 60.0
+offset_bottom = -37.0
+scale = Vector2(0.5, 0.5)
+theme_override_styles/normal = SubResource("StyleBoxFlat_o7i7f")
+text = "NaN"
+label_settings = SubResource("LabelSettings_wesoo")
