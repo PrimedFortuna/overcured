@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://cjy16mnrlu1vo"]
+
+[ext_resource type="Script" uid="uid://claq5iss3m6nt" path="res://Scripts/PickUpObject.gd" id="1_ydvw2"]
+[ext_resource type="Texture2D" uid="uid://dyri8hwmbd65s" path="res://Assets/status/awakening.png" id="2_4poa7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_owfmo"]
+radius = 24.0
+
+[node name="Awakening" type="Node2D"]
+scale = Vector2(2, 2)
+
+[node name="Awakening" type="Area2D" parent="."]
+script = ExtResource("1_ydvw2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Awakening"]
+shape = SubResource("CircleShape2D_owfmo")
+
+[node name="Sprite2D" type="Sprite2D" parent="Awakening"]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_4poa7")

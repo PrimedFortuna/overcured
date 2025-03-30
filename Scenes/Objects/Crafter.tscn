@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://clt2d71t25xht"]
+
+[ext_resource type="Script" uid="uid://du6dtu4nd2nye" path="res://Scripts/Crafter.gd" id="1_kjfg2"]
+[ext_resource type="Texture2D" uid="uid://b3gf8gfou8jel" path="res://Assets/Crafter.png" id="1_onaxf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kjfg2"]
+size = Vector2(32, 24)
+
+[node name="Crafter" type="Node2D"]
+script = ExtResource("1_kjfg2")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+texture = ExtResource("1_onaxf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_kjfg2")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+offset_left = 2.0
+offset_top = -16.0
+offset_right = 32.0
+offset_bottom = -13.0
+rotation = 1.5708
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true

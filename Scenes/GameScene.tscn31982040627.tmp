@@ -1,0 +1,170 @@
+[gd_scene load_steps=23 format=3 uid="uid://db6ji3v1uapgm"]
+
+[ext_resource type="Script" uid="uid://bp2xtipdcd5rl" path="res://Scripts/GameScene.gd" id="1_lohlh"]
+[ext_resource type="Texture2D" uid="uid://hq1i1r3pw5q4" path="res://Assets/background.png" id="2_4v654"]
+[ext_resource type="Script" uid="uid://cifuuoa1l86f7" path="res://Scripts/Player.gd" id="2_jwv4s"]
+[ext_resource type="PackedScene" uid="uid://ctg0dh4n60hqv" path="res://Scenes/Items/OranBerry.tscn" id="4_hgvmy"]
+[ext_resource type="PackedScene" uid="uid://ncusujahgsdp" path="res://Scenes/Items/Pokeball.tscn" id="4_jwv4s"]
+[ext_resource type="PackedScene" uid="uid://cafnptu3t81yt" path="res://Scenes/Items/ChestoBerry.tscn" id="5_124qp"]
+[ext_resource type="PackedScene" uid="uid://b7rgo8hd8g4iq" path="res://Scenes/Objects/Table.tscn" id="6_kilg5"]
+[ext_resource type="PackedScene" uid="uid://cjbqxcu752l23" path="res://Scenes/Objects/Crate.tscn" id="8_leul7"]
+[ext_resource type="SpriteFrames" uid="uid://phhfeex1qlvu" path="res://Scenes/sprite/brendan.tres" id="11_7rq2r"]
+[ext_resource type="SpriteFrames" uid="uid://b4t5ru6jdsnf7" path="res://Scenes/sprite/joy.tres" id="12_124qp"]
+[ext_resource type="SpriteFrames" uid="uid://bi0idbbcvumal" path="res://Scenes/sprite/bugcatcher.tres" id="14_qolck"]
+[ext_resource type="PackedScene" uid="uid://yf41jj64pimm" path="res://Scenes/Objects/HealStation.tscn" id="24_4v654"]
+[ext_resource type="Script" uid="uid://dbclnnypil4qw" path="res://Scripts/HealStation.gd" id="25_leul7"]
+[ext_resource type="PackedScene" uid="uid://b1o2a7a3qekkj" path="res://Scenes/Objects/RedTable.tscn" id="27_wp4mh"]
+[ext_resource type="PackedScene" uid="uid://clt2d71t25xht" path="res://Scenes/Objects/Crafter.tscn" id="28_y0yaw"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_haeiw"]
+normal = Vector2(0, 1)
+distance = -504.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_b5kf5"]
+normal = Vector2(-1, 0)
+distance = -624.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_hvuor"]
+distance = -480.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_i2arf"]
+normal = Vector2(1, 0)
+distance = -888.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4v654"]
+size = Vector2(464, 61.5384)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_leul7"]
+size = Vector2(473, 80)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b5kf5"]
+size = Vector2(53.3333, 66.6667)
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_lohlh")
+
+[node name="Floor" type="Sprite2D" parent="."]
+position = Vector2(-8.00007, -12)
+scale = Vector2(0.916667, 0.925926)
+texture = ExtResource("2_4v654")
+
+[node name="Colliders" type="StaticBody2D" parent="."]
+
+[node name="Top" type="CollisionShape2D" parent="Colliders"]
+shape = SubResource("WorldBoundaryShape2D_haeiw")
+
+[node name="Right" type="CollisionShape2D" parent="Colliders"]
+shape = SubResource("WorldBoundaryShape2D_b5kf5")
+
+[node name="Bottom" type="CollisionShape2D" parent="Colliders"]
+shape = SubResource("WorldBoundaryShape2D_hvuor")
+
+[node name="Left" type="CollisionShape2D" parent="Colliders"]
+shape = SubResource("WorldBoundaryShape2D_i2arf")
+
+[node name="BalcãoTop" type="CollisionShape2D" parent="Colliders"]
+position = Vector2(512, -328)
+scale = Vector2(1, 2.08)
+shape = SubResource("RectangleShape2D_4v654")
+
+[node name="BalcãoBot" type="CollisionShape2D" parent="Colliders"]
+position = Vector2(512, 348.8)
+scale = Vector2(1, 2.08)
+shape = SubResource("RectangleShape2D_leul7")
+
+[node name="Crate" parent="." instance=ExtResource("8_leul7")]
+position = Vector2(88, 352)
+
+[node name="OranBerry" parent="Crate" instance=ExtResource("4_hgvmy")]
+position = Vector2(-32, -32)
+
+[node name="OranBerry2" parent="Crate" instance=ExtResource("4_hgvmy")]
+position = Vector2(24, -32)
+
+[node name="Crate2" parent="." instance=ExtResource("8_leul7")]
+position = Vector2(-144, 352)
+
+[node name="OranBerry" parent="Crate2" instance=ExtResource("4_hgvmy")]
+position = Vector2(-32, -32)
+
+[node name="ChestoBerry" parent="Crate2" instance=ExtResource("5_124qp")]
+position = Vector2(32, -32)
+
+[node name="PickUpObject" parent="." instance=ExtResource("4_jwv4s")]
+position = Vector2(312, -64)
+
+[node name="PickUpObject2" parent="." instance=ExtResource("4_jwv4s")]
+position = Vector2(312, -168)
+
+[node name="Table" parent="." instance=ExtResource("6_kilg5")]
+position = Vector2(-512, -192)
+
+[node name="Table2" parent="." instance=ExtResource("6_kilg5")]
+position = Vector2(-512, 216)
+
+[node name="Crafter" parent="." instance=ExtResource("28_y0yaw")]
+position = Vector2(-136, -384)
+scale = Vector2(5, 5)
+
+[node name="HealStation" parent="." instance=ExtResource("24_4v654")]
+position = Vector2(128, -408)
+script = ExtResource("25_leul7")
+
+[node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(-7, -10)
+scale = Vector2(1.8, 1.8)
+script = ExtResource("2_jwv4s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(-0.555551, 12.2222)
+shape = SubResource("RectangleShape2D_b5kf5")
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+limit_smoothed = true
+
+[node name="Brendan" type="AnimatedSprite2D" parent="Player"]
+visible = false
+position = Vector2(-0.555556, 5.55556)
+scale = Vector2(1.41034, 1.28833)
+sprite_frames = ExtResource("11_7rq2r")
+animation = &"walk_up_speed"
+autoplay = "idle_down"
+speed_scale = 0.5
+
+[node name="Joy" type="AnimatedSprite2D" parent="Player"]
+position = Vector2(-0.555555, 10.4889)
+scale = Vector2(1.1, 1.1)
+sprite_frames = ExtResource("12_124qp")
+animation = &"walk_up"
+speed_scale = 0.5
+
+[node name="Input" parent="." instance=ExtResource("27_wp4mh")]
+position = Vector2(672, -136)
+rotation = 1.5708
+scale = Vector2(1.8, 1.8)
+
+[node name="Output" parent="." instance=ExtResource("27_wp4mh")]
+position = Vector2(672, 128)
+rotation = 1.5708
+scale = Vector2(1.8, 1.8)
+
+[node name="Player3" type="CharacterBody2D" parent="."]
+visible = false
+position = Vector2(-832, 416)
+script = ExtResource("2_jwv4s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player3"]
+position = Vector2(0, 8)
+shape = SubResource("RectangleShape2D_b5kf5")
+
+[node name="Camera2D" type="Camera2D" parent="Player3"]
+visible = false
+limit_smoothed = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player3"]
+position = Vector2(2.38419e-07, 7)
+scale = Vector2(1.41034, 1.28833)
+sprite_frames = ExtResource("14_qolck")
+animation = &"walk_up"
+frame_progress = 0.0473532
+speed_scale = 0.5

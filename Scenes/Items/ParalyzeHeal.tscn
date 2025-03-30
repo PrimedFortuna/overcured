@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://ogx0owxfwh1p"]
+
+[ext_resource type="Script" uid="uid://claq5iss3m6nt" path="res://Scripts/PickUpObject.gd" id="1_gvh07"]
+[ext_resource type="Texture2D" uid="uid://yr5uvg2mbbut" path="res://Assets/status/paralyze-heal.png" id="2_s7uhw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5wtry"]
+radius = 24.0
+
+[node name="ParalyzeHeal" type="Node2D"]
+scale = Vector2(2, 2)
+
+[node name="ParalyzeHeal" type="Area2D" parent="."]
+script = ExtResource("1_gvh07")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ParalyzeHeal"]
+shape = SubResource("CircleShape2D_5wtry")
+
+[node name="Sprite2D" type="Sprite2D" parent="ParalyzeHeal"]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_s7uhw")

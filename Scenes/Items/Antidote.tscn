@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bmfxq8ohxslov"]
+
+[ext_resource type="Script" uid="uid://claq5iss3m6nt" path="res://Scripts/PickUpObject.gd" id="1_wjrr0"]
+[ext_resource type="Texture2D" uid="uid://gar6lpwpt30b" path="res://Assets/status/antidote.png" id="2_x3s1i"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2apsc"]
+radius = 24.0
+
+[node name="Antidote" type="Node2D"]
+scale = Vector2(2, 2)
+
+[node name="Antidote" type="Area2D" parent="."]
+script = ExtResource("1_wjrr0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Antidote"]
+shape = SubResource("CircleShape2D_2apsc")
+
+[node name="Sprite2D" type="Sprite2D" parent="Antidote"]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_x3s1i")
