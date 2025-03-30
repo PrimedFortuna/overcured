@@ -23,3 +23,4 @@ func _on_button_2_pressed() -> void:
 
 func _on_button_3_pressed() -> void:
 	Global.selected_skin = curr_skin
+	get_tree().change_scene_to_file("res://Scenes/MainMenu.tscn")
