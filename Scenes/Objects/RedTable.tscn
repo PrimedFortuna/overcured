@@ -1,9 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://b1o2a7a3qekkj"]
+[gd_scene load_steps=6 format=3 uid="uid://b1o2a7a3qekkj"]
 
 [ext_resource type="Script" uid="uid://cxo6t3kx4u6l2" path="res://Scripts/RedTable.gd" id="1_sbj5h"]
+[ext_resource type="FontFile" uid="uid://b5igmqdsdnp5c" path="res://Assets/PixelatedEleganceRegular-ovyAA.ttf" id="2_j2gfc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j2gfc"]
 size = Vector2(150, 50)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_biow5"]
+bg_color = Color(0, 0, 0, 0.494118)
+
+[sub_resource type="LabelSettings" id="LabelSettings_cmoky"]
+font = ExtResource("2_j2gfc")
+font_size = 20
 
 [node name="RedTable" type="Node2D"]
 script = ExtResource("1_sbj5h")
@@ -24,3 +32,13 @@ offset_bottom = 23.0
 grow_horizontal = 2
 grow_vertical = 2
 columns = 3
+
+[node name="CompletedLabel" type="Label" parent="."]
+offset_top = -40.0
+offset_right = 80.0
+offset_bottom = -17.0
+rotation = -1.5708
+scale = Vector2(0.5, 0.5)
+theme_override_styles/normal = SubResource("StyleBoxFlat_biow5")
+text = "NaN"
+label_settings = SubResource("LabelSettings_cmoky")

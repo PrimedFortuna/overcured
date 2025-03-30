@@ -1,11 +1,16 @@
+<<<<<<< HEAD
 [gd_scene load_steps=6 format=3 uid="uid://bhvfdni4oakug"]
 
 [ext_resource type="Texture2D" uid="uid://dvmqgvf5y1jkq" path="res://Assets/menubackground.png" id="1_bxkgl"]
 [ext_resource type="Script" uid="uid://c71255uxn4fmx" path="res://Scenes/Skin.gd" id="3_i3ogb"]
 [ext_resource type="FontFile" uid="uid://b5igmqdsdnp5c" path="res://Assets/PixelatedEleganceRegular-ovyAA.ttf" id="4_i3ogb"]
-[ext_resource type="Texture2D" uid="uid://bhgxi7igiihnh" path="res://Assets/Sprites/Joy_Sprites/joy_front_still_1.png" id="4_njv2a"]
+=======
+[gd_scene load_steps=4 format=3 uid="uid://bhvfdni4oakug"]
 
-[sub_resource type="GDScript" id="GDScript_eq3af"]
+[ext_resource type="Texture2D" uid="uid://dvmqgvf5y1jkq" path="res://Assets/menubackground.png" id="1_bxkgl"]
+[ext_resource type="Script" uid="uid://dhm8rpstygydf" path="res://Scripts/Skin.gd" id="3_i3ogb"]
+>>>>>>> main2
+[ext_resource type="Texture2D" uid="uid://bhgxi7igiihnh" path="res://Assets/Sprites/Joy_Sprites/joy_front_still_1.png" id="4_njv2a"]
 
 [node name="SkinSelection" type="Control"]
 layout_mode = 3
@@ -14,7 +19,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = SubResource("GDScript_eq3af")
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 0
@@ -58,6 +62,7 @@ offset_bottom = 640.0
 theme_override_font_sizes/font_size = 40
 text = "OK"
 
+<<<<<<< HEAD
 [node name="BackButton" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 2
@@ -73,5 +78,8 @@ theme_override_font_sizes/font_size = 32
 text = "Go Back"
 
 [connection signal="pressed" from="Skin/Button" to="." method="_on_button_pressed"]
+=======
+>>>>>>> main2
 [connection signal="pressed" from="Skin/Button" to="Skin" method="_on_button_pressed"]
 [connection signal="pressed" from="Skin/Button2" to="Skin" method="_on_button_2_pressed"]
+[connection signal="pressed" from="Skin/Button3" to="Skin" method="_on_button_3_pressed"]

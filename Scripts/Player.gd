@@ -1,12 +1,13 @@
 extends CharacterBody2D
 
+var skin_path = Global.skins[Global.selected_skin]
 const SPEED = 260
 const RUN_SPEED = 380
 var pickup_object = null
 
 @onready var healstation = get_node("../HealStation")
 @onready var world = get_parent()
-@onready var anim = get_node("./Brendan")
+@onready var anim = get_node(skin_path)
 var last_direction = null
 
 # New variables for Pokéball usage and Pokémon following
@@ -14,6 +15,15 @@ var is_using_pokeball = false
 var is_using_potion = false
 var is_using_heal = false
 var pokemon_following = null  # Pokémon being followed by the Pokéball
+
+func _ready():
+	#Skin visibility
+	if Global.selected_skin == 0:
+		$Brendan.visible = false
+		$Joy.visible = true
+	elif Global.selected_skin == 1:
+		$Brendan.visible = true
+		$Joy.visible = false
 
 func _physics_process(_delta):
 	var direction = Vector2.ZERO
