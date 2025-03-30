@@ -1,4 +1,4 @@
-extends Node2D
+dextends Node2D
 
 var max_items: int = 6  
 var pickup_items: Array = []  
