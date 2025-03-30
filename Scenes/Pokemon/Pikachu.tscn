@@ -1,13 +1,39 @@
-[gd_scene load_steps=3 format=3 uid="uid://djuquj6c3t2cv"]
+[gd_scene load_steps=6 format=3 uid="uid://djuquj6c3t2cv"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_eg0iq"]
+[ext_resource type="Script" uid="uid://bsyd2yyb7h1tq" path="res://Scripts/Pokemon.gd" id="1_n3bbu"]
+[ext_resource type="Texture2D" uid="uid://cikgxbch7t2hg" path="res://Assets/Sprites/pikachu_sprite/pikachu_front_1.png" id="1_w7wcm"]
+[ext_resource type="Texture2D" uid="uid://cfsfhk3n05yq1" path="res://Assets/Sprites/pikachu_sprite/pikachu_left_1.png" id="2_n3bbu"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2dygt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_w7wcm")
+}],
+"loop": true,
+"name": &"down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_n3bbu")
+}],
+"loop": true,
+"name": &"left",
+"speed": 5.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_uj64t"]
+radius = 19.0263
 
 [node name="Pikachu" type="Node2D"]
+scale = Vector2(2, 2)
+script = ExtResource("1_n3bbu")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_eg0iq")
+scale = Vector2(2.5, 2.5)
+sprite_frames = SubResource("SpriteFrames_2dygt")
+animation = &"down"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_uj64t")
