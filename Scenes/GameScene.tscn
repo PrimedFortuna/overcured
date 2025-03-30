@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://db6ji3v1uapgm"]
+[gd_scene load_steps=25 format=3 uid="uid://db6ji3v1uapgm"]
 
 [ext_resource type="Script" uid="uid://bp2xtipdcd5rl" path="res://Scripts/GameScene.gd" id="1_lohlh"]
 [ext_resource type="Texture2D" uid="uid://hq1i1r3pw5q4" path="res://Assets/background.png" id="2_4v654"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://c3nyfbvf52sre" path="res://Scenes/Items/Potion.tscn" id="15_qolck"]
 [ext_resource type="PackedScene" uid="uid://bv1g6s7gddv1g" path="res://Scenes/pause_menu.tscn" id="16_qolck"]
 [ext_resource type="PackedScene" uid="uid://idouylcpn5vv" path="res://Scenes/Items/FullHeal.tscn" id="16_ry528"]
+[ext_resource type="PackedScene" uid="uid://cm0n3ns6am0vd" path="res://Scenes/Items/MaxPotion.tscn" id="17_ry528"]
 [ext_resource type="PackedScene" uid="uid://yf41jj64pimm" path="res://Scenes/Objects/HealStation.tscn" id="24_4v654"]
 [ext_resource type="Script" uid="uid://dbclnnypil4qw" path="res://Scripts/HealStation.gd" id="25_leul7"]
 [ext_resource type="PackedScene" uid="uid://b1o2a7a3qekkj" path="res://Scenes/Objects/RedTable.tscn" id="27_wp4mh"]
@@ -147,7 +148,12 @@ position = Vector2(-259, 1)
 [node name="FullHeal" parent="." instance=ExtResource("16_ry528")]
 position = Vector2(-366, 7)
 
+[node name="MaxPotion" parent="." instance=ExtResource("17_ry528")]
+position = Vector2(-474, 9)
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("16_qolck")]
 visible = false
+offset_top = -2.0
+offset_bottom = -2.0

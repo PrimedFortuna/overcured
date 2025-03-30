@@ -1,9 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://djuquj6c3t2cv"]
+[gd_scene load_steps=11 format=3 uid="uid://djuquj6c3t2cv"]
 
 [ext_resource type="Script" uid="uid://bsyd2yyb7h1tq" path="res://Scripts/Pokemon.gd" id="1_n3bbu"]
 [ext_resource type="Texture2D" uid="uid://cikgxbch7t2hg" path="res://Assets/Sprites/pikachu_sprite/pikachu_front_1.png" id="1_w7wcm"]
 [ext_resource type="Texture2D" uid="uid://cfsfhk3n05yq1" path="res://Assets/Sprites/pikachu_sprite/pikachu_left_1.png" id="2_n3bbu"]
-[ext_resource type="Texture2D" uid="uid://b2k24jrxcwwr0" path="res://Assets/Sprites/pikachu_sprite/pikachu_front_2.png" id="3_2dygt"]
 [ext_resource type="FontFile" uid="uid://b5igmqdsdnp5c" path="res://Assets/PixelatedEleganceRegular-ovyAA.ttf" id="4_2dygt"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2dygt"]
@@ -11,13 +10,10 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("1_w7wcm")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_2dygt")
 }],
 "loop": true,
 "name": &"down",
-"speed": 1.5
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -53,38 +49,24 @@ script = ExtResource("1_n3bbu")
 scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_2dygt")
 animation = &"down"
-autoplay = "down"
-frame_progress = 0.71731
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_uj64t")
 
-[node name="HPLabel" type="Label" parent="."]
-offset_left = -20.0
-offset_top = -48.0
-offset_right = 60.0
-offset_bottom = -25.0
-scale = Vector2(0.5, 0.5)
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HPLabel" type="Label" parent="CanvasLayer"]
+offset_left = -40.0
+offset_top = -95.0
+offset_right = 40.0
+offset_bottom = -72.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_j64g6")
-text = "NaN"
 label_settings = SubResource("LabelSettings_spc1p")
 
-[node name="StatusLabel" type="Label" parent="."]
-offset_left = -20.0
-offset_top = -36.0
-offset_right = 60.0
-offset_bottom = -13.0
-scale = Vector2(0.5, 0.5)
+[node name="StatusLabel" type="Label" parent="CanvasLayer"]
+offset_left = -40.0
+offset_top = -72.0
+offset_right = 40.0
+offset_bottom = -49.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_by5e7")
-text = "NaN"
-label_settings = SubResource("LabelSettings_px6o7")
-
-[node name="CompletedLabel" type="Label" parent="."]
-offset_left = -20.0
-offset_top = -60.0
-offset_right = 60.0
-offset_bottom = -37.0
-scale = Vector2(0.5, 0.5)
-theme_override_styles/normal = SubResource("StyleBoxFlat_by5e7")
-text = "NaN"
 label_settings = SubResource("LabelSettings_px6o7")
